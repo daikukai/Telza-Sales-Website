@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "228Fgo1sBXcNVDi3s6k8M"
+uri = "file://artifacts/telza-sales/public/hero-bg.png"
+type = "image"
+title = "Professional Australian business meeting"

@@ -1,0 +1,378 @@
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronRight, Sun, Zap, Crosshair, Users, MessageSquare, Briefcase, Activity, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-zinc-50 font-sans selection:bg-primary/30">
+      {/* Navbar */}
+      <nav
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b ${
+          scrolled
+            ? "bg-zinc-950/80 backdrop-blur-md border-zinc-800/50 py-4"
+            : "bg-transparent border-transparent py-6"
+        }`}
+      >
+        <div className="container max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <a href="#" className="flex items-center gap-2" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
+              <img src="/logo.png" alt="Telza Sales" className="h-8 md:h-10 object-contain" />
+            </a>
+            <div className="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+              <button onClick={() => scrollTo("verticals")} className="hover:text-zinc-50 transition-colors">Verticals</button>
+              <button onClick={() => scrollTo("process")} className="hover:text-zinc-50 transition-colors">Process</button>
+              <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-50 transition-colors">Why Telza</button>
+            </div>
+          </div>
+          <Button 
+            className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-[0_0_15px_rgba(160,32,32,0.3)] transition-all"
+            onClick={() => window.location.href = "mailto:contact@telzasale.com"}
+          >
+            Book a Call
+          </Button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/40 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/80 z-10"></div>
+          <img 
+            src="/hero-bg.png" 
+            alt="Business Meeting" 
+            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
+          />
+        </div>
+
+        <div className="container max-w-6xl mx-auto px-6 md:px-12 relative z-20">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="max-w-3xl"
+          >
+            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-xs font-medium text-zinc-300 uppercase tracking-wider">Australian B2B Specialist</span>
+            </motion.div>
+            
+            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-serif">
+              I help Australian B2B companies solve the hardest part of sales: <br/>
+              <span className="text-primary italic">Filling the calendar.</span>
+            </motion.h1>
+            
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl leading-relaxed">
+              Whether you're a Solar SaaS looking to reach installers or a Sports SaaS targeting grassroots clubs — getting the right decision-maker to say YES to a 15-minute demo is the hardest part. That's what I do.
+            </motion.p>
+            
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-14 text-base font-semibold shadow-[0_0_20px_rgba(160,32,32,0.4)] transition-all hover:scale-105"
+                onClick={() => window.location.href = "mailto:contact@telzasale.com"}
+              >
+                Book a 15-Minute Strategy Call
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Verticals Section */}
+      <section id="verticals" className="py-24 bg-white text-zinc-950">
+        <div className="container max-w-6xl mx-auto px-6 md:px-12">
+          <div className="mb-16 md:mb-24 text-center max-w-2xl mx-auto">
+            <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-3">High-Growth Verticals</h2>
+            <h3 className="text-3xl md:text-5xl font-bold tracking-tight font-serif">Where I deliver the best results.</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+              className="bg-zinc-50 border border-zinc-100 p-10 rounded-2xl hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-white shadow-sm border border-zinc-100 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Sun className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4 font-serif">Solar & Renewables</h4>
+              <p className="text-zinc-600 leading-relaxed">
+                Targeting installers and retailers with design and CRM solutions. I know how to cut through the noise and reach the operators driving the transition.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+              className="bg-zinc-50 border border-zinc-100 p-10 rounded-2xl hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-white shadow-sm border border-zinc-100 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Activity className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4 font-serif">Sports & Athlete Tech</h4>
+              <p className="text-zinc-600 leading-relaxed">
+                Connecting event and performance tools with clubs and academies. Turning complex athletic data platforms into undeniable value propositions.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+              className="bg-zinc-50 border border-zinc-100 p-10 rounded-2xl hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-white shadow-sm border border-zinc-100 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4 font-serif">Specialized SaaS</h4>
+              <p className="text-zinc-600 leading-relaxed">
+                Helping technical founders move from founder-led sales to automated, predictable outreach. Building scalable engines for niche software.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="py-24 bg-zinc-950 border-t border-zinc-900 relative">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div className="container max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-center">
+            <div className="w-full md:w-1/3">
+              <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-3">My Process</h2>
+              <h3 className="text-4xl md:text-5xl font-bold tracking-tight font-serif text-white mb-6">Built for precision, not volume.</h3>
+              <p className="text-zinc-400 text-lg">
+                The era of spray-and-pray outreach is over. I build hyper-targeted campaigns that treat your prospects like humans.
+              </p>
+            </div>
+            
+            <div className="w-full md:w-2/3">
+              <div className="space-y-12">
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeIn}
+                  className="flex gap-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-primary font-bold">1</div>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                      Targeting <Crosshair className="h-5 w-5 text-zinc-500" />
+                    </h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      I don't spray and pray. I build hyper-accurate lists of exactly who needs your solution right now, verifying every data point.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeIn}
+                  className="flex gap-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-primary font-bold">2</div>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                      Messaging <MessageSquare className="h-5 w-5 text-zinc-500" />
+                    </h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      I write scripts that sound like a human, not a bot. Relevant, concise, and focused entirely on the prospect's immediate pain points.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeIn}
+                  className="flex gap-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-primary font-bold">3</div>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                      Execution <Briefcase className="h-5 w-5 text-zinc-500" />
+                    </h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      I handle the cold starts so your sales team can focus on the finish line. You get the qualified meetings, I handle the rejection.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Telza Section */}
+      <section id="why-telza" className="py-24 bg-zinc-50 text-zinc-950">
+        <div className="container max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-serif mb-6">Why work with me?</h2>
+            <div className="w-20 h-1 bg-primary mx-auto"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-zinc-100 shadow-sm"
+            >
+              <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
+              <div>
+                <h4 className="text-xl font-bold mb-2">Australian B2B Specialist</h4>
+                <p className="text-zinc-600">I understand the local market nuances, decision-making structures, and exactly how Australian business leaders prefer to be approached.</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-zinc-100 shadow-sm"
+            >
+              <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
+              <div>
+                <h4 className="text-xl font-bold mb-2">Domain-Specific Data Access</h4>
+                <p className="text-zinc-600">Exclusive access and deep understanding of data structures in Solar and Sports Tech, finding the contacts others miss.</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-zinc-100 shadow-sm"
+            >
+              <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
+              <div>
+                <h4 className="text-xl font-bold mb-2">Human-First Outreach</h4>
+                <p className="text-zinc-600">No automation that feels automated. Every message is designed to get genuine replies from skeptical decision-makers.</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-zinc-100 shadow-sm"
+            >
+              <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
+              <div>
+                <h4 className="text-xl font-bold mb-2">You Close, I Prospect</h4>
+                <p className="text-zinc-600">Stop burning your expensive closers on top-of-funnel grunt work. Let them do what they do best while I keep their calendars full.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero-bg.png')] opacity-10 mix-blend-overlay object-cover"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        
+        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.h2 variants={fadeIn} className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">
+              Ready to fill your calendar?
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Stop waiting for inbound. Let's put the right conversations in front of your team this week.
+            </motion.p>
+            <motion.div variants={fadeIn}>
+              <Button 
+                size="lg" 
+                className="bg-white text-primary hover:bg-zinc-100 rounded-full px-10 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105"
+                onClick={() => window.location.href = "mailto:contact@telzasale.com"}
+              >
+                Book a Free Strategy Call
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-zinc-950 py-12 border-t border-zinc-900">
+        <div className="container max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <img src="/logo.png" alt="Telza Sales" className="h-8 object-contain brightness-0 invert" />
+            <p className="text-zinc-500 text-sm">More leads. More Sales.</p>
+          </div>
+          
+          <div className="flex gap-6 text-sm font-medium text-zinc-500">
+            <button onClick={() => scrollTo("verticals")} className="hover:text-zinc-300 transition-colors">Verticals</button>
+            <button onClick={() => scrollTo("process")} className="hover:text-zinc-300 transition-colors">Process</button>
+            <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-300 transition-colors">Why Telza</button>
+          </div>
+
+          <div className="text-zinc-600 text-sm">
+            © {new Date().getFullYear()} telzasale.com
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
