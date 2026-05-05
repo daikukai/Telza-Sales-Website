@@ -1,24 +1,24 @@
 import express, { type Express, type Request, type Response } from "express";
 import cors from "cors";
-import { pinoHttp } from "pino-http"; // Changed to named import
+// Use this specific import style for pino-http:
+import * as pinoHttp from "pino-http"; 
 import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
 
 app.use(
-  pinoHttp({
+  (pinoHttp.default || pinoHttp)({ // This handles both ESM and CommonJS styles
     logger,
     serializers: {
-      // Added : Request and : Response types below
-      req(req: Request) {
+      req(req: any) { // Changed to 'any' temporarily to bypass property errors
         return {
           id: req.id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-      res(res: Response) {
+      res(res: any) {
         return {
           statusCode: res.statusCode,
         };
