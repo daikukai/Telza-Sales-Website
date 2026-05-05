@@ -7,15 +7,15 @@ import { logger } from "./lib/logger";
 
 const app: Express = express();
 
-// pino-http ESM/CJS interop — the default export may be the module itself
-// or nested under .default depending on the bundler/environment
-const pinoHttpMiddleware =
-  typeof pinoHttp === "function"
-    ? pinoHttp
-    : (pinoHttp as unknown as { default: typeof pinoHttp }).default;
+// pino-http uses `export =` which is not directly callable under all
+// moduleResolution modes (e.g. Vercel uses "node"/"node16" instead of "bundler").
+// Casting to `any` is intentional and safe here — it bypasses the TS2349 error
+// without affecting runtime behaviour.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createHttpLogger = pinoHttp as any;
 
 app.use(
-  pinoHttpMiddleware({
+  createHttpLogger({
     logger,
     serializers: {
       req(req: IncomingMessage & { id?: string | number }) {
@@ -33,6 +33,7 @@ app.use(
     },
   }),
 );
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
