@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Sun, Zap, Crosshair, Users, MessageSquare, Briefcase, Activity, CheckCircle2, X } from "lucide-react";
+import { ChevronRight, Sun, Zap, Crosshair, MessageSquare, Briefcase, Activity, CheckCircle2, X, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -261,11 +261,11 @@ export default function Home() {
             </div>
           </div>
           <Button
-            data-testid="button-book-call-nav"
+            data-testid="button-contact-us-nav"
             className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-[0_0_15px_rgba(160,32,32,0.3)] transition-all"
             onClick={() => setModalOpen(true)}
           >
-            Book a Call
+            Contact Us
           </Button>
         </div>
       </nav>
@@ -573,8 +573,18 @@ export default function Home() {
             <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-300 transition-colors">Why Telza</button>
           </div>
 
-          <div className="text-zinc-600 text-sm">
-            © {new Date().getFullYear()} telzasale.com
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/company/telzasales/?viewAsMember=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-linkedin"
+              className="text-zinc-500 hover:text-[#0A66C2] transition-colors"
+              aria-label="Telza Sales on LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <span className="text-zinc-600 text-sm">© {new Date().getFullYear()} telzasale.com</span>
           </div>
         </div>
       </footer>
