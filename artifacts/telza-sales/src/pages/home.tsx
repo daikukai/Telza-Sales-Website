@@ -49,7 +49,7 @@ function BookingModal({ open, onClose }: { open: boolean; onClose: () => void })
     const body = encodeURIComponent(
       `Hi,\n\nI'd like to book a strategy call.\n\nName: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}${data.message ? `\nMessage: ${data.message}` : ""}\n`
     );
-    window.location.href = `mailto:contact@telzasale.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:kai@telzasales.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     reset();
   };
@@ -308,7 +308,7 @@ export default function Home() {
                 size="lg"
                 data-testid="button-book-call-hero"
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-14 text-base font-semibold shadow-[0_0_20px_rgba(160,32,32,0.4)] transition-all hover:scale-105"
-                onClick={() => setModalOpen(true)}
+                onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
               >
                 Book a 15-Minute Strategy Call
                 <ChevronRight className="ml-2 h-5 w-5" />
@@ -550,7 +550,7 @@ export default function Home() {
                 size="lg"
                 data-testid="button-book-call-cta"
                 className="bg-white text-primary hover:bg-zinc-100 rounded-full px-10 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105"
-                onClick={() => setModalOpen(true)}
+                onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
               >
                 Book a Free Strategy Call
               </Button>
@@ -563,7 +563,7 @@ export default function Home() {
       <footer className="bg-zinc-950 py-12 border-t border-zinc-900">
         <div className="container max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <img src="/logo.png" alt="Telza Sales" className="h-8 object-contain brightness-0 invert" />
+            <img src="/logo.png" alt="Telza Sales" className="h-8 object-contain" />
             <p className="text-zinc-500 text-sm">More leads. More Sales.</p>
           </div>
 
