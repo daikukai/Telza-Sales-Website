@@ -113,8 +113,8 @@ function BookingModal({ open, onClose }: { open: boolean; onClose: () => void })
                   <h3 className="text-xl font-bold text-white font-serif">You're all set!</h3>
                   <p className="text-zinc-400 max-w-xs">
                     Your email client should have opened. If not, reach out directly at{" "}
-                    <a href="mailto:contact@telzasale.com" className="text-primary hover:underline">
-                      contact@telzasale.com
+                    <a href="mailto:kai@telzasales.com" className="text-primary hover:underline">
+                      kai@telzasales.com
                     </a>
                   </p>
                   <Button
@@ -295,7 +295,7 @@ export default function Home() {
             </motion.div>
 
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-serif">
-              I help Australian B2B companies solve the hardest part of sales: <br/>
+              We help B2B companies solve the hardest part of sales: <br/>
               <span className="text-primary italic">Filling the calendar.</span>
             </motion.h1>
 
@@ -323,7 +323,7 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           <div className="mb-16 md:mb-24 text-center max-w-2xl mx-auto">
             <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-3">High-Growth Verticals</h2>
-            <h3 className="text-3xl md:text-5xl font-bold tracking-tight font-serif">Where I deliver the best results.</h3>
+            <h3 className="text-3xl md:text-5xl font-bold tracking-tight font-serif">Where we deliver the best results.</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -477,8 +477,8 @@ export default function Home() {
             >
               <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
               <div>
-                <h4 className="text-xl font-bold mb-2">Australian B2B Specialist</h4>
-                <p className="text-zinc-600">I understand the local market nuances, decision-making structures, and exactly how Australian business leaders prefer to be approached.</p>
+                <h4 className="text-xl font-bold mb-2"> B2B Specialist</h4>
+                <p className="text-zinc-600">We understand the local market nuances, decision-making structures, and exactly how business leaders prefer to be approached.</p>
               </div>
             </motion.div>
 
@@ -519,7 +519,7 @@ export default function Home() {
             >
               <CheckCircle2 className="h-8 w-8 text-primary flex-shrink-0" />
               <div>
-                <h4 className="text-xl font-bold mb-2">You Close, I Prospect</h4>
+                <h4 className="text-xl font-bold mb-2">You Close, We Prospect</h4>
                 <p className="text-zinc-600">Stop burning your expensive closers on top-of-funnel grunt work. Let them do what they do best while I keep their calendars full.</p>
               </div>
             </motion.div>
@@ -571,6 +571,8 @@ export default function Home() {
             <button onClick={() => scrollTo("verticals")} className="hover:text-zinc-300 transition-colors">Verticals</button>
             <button onClick={() => scrollTo("process")} className="hover:text-zinc-300 transition-colors">Process</button>
             <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-300 transition-colors">Why Telza</button>
+            <button onClick={() => window.location.href = "https://netlify.app"} 
+  className="hover:text-zinc-300 transition-colors">Telza AI</button>
           </div>
 
           <div className="flex items-center gap-4">
