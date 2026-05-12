@@ -258,6 +258,8 @@ export default function Home() {
               <button onClick={() => scrollTo("verticals")} className="hover:text-zinc-50 transition-colors">Verticals</button>
               <button onClick={() => scrollTo("process")} className="hover:text-zinc-50 transition-colors">Process</button>
               <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-50 transition-colors">Why Telza</button>
+              <button onClick={() => window.location.href = "https://telzautomation.netlify.app/"} 
+  className="hover:text-zinc-300 transition-colors">Telza AI</button>
             </div>
           </div>
           <Button
@@ -571,7 +573,7 @@ export default function Home() {
             <button onClick={() => scrollTo("verticals")} className="hover:text-zinc-300 transition-colors">Verticals</button>
             <button onClick={() => scrollTo("process")} className="hover:text-zinc-300 transition-colors">Process</button>
             <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-300 transition-colors">Why Telza</button>
-            <button onClick={() => window.location.href = "https://netlify.app"} 
+            <button onClick={() => window.location.href = "https://telzautomation.netlify.app/"} 
   className="hover:text-zinc-300 transition-colors">Telza AI</button>
           </div>
 
