@@ -253,11 +253,11 @@ function BookingModal({ open, onClose, defaultService }: { open: boolean; onClos
                       data-testid="select-service"
                       className="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-2.5 text-zinc-900 text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
                     >
-                      <option value="AI Search & GEO/AEO Audit">AI Search & GEO/AEO Audit (Visibility Diagnostic)</option>
-                      <option value="Clay + AI Deep Enrichment Outbound Engine">Clay + AI Deep Enrichment Outbound Engine</option>
-                      <option value="24/7 Voice AI Receptionist & Speed-to-Lead">24/7 Voice AI Receptionist & Speed-to-Lead</option>
-                      <option value="Custom Internal RAG Knowledge & Automations">Custom Internal RAG Knowledge & Automations</option>
-                      <option value="Full Revenue Infrastructure Package">Full Revenue Infrastructure Package</option>
+                      <option value="72-Hour AI Search & GEO/AEO Visibility Sprint">72-Hour AI Search & GEO/AEO Visibility Sprint</option>
+                      <option value="Turnkey Outbound Engine (Clay + Waterfall Enrichment)">Turnkey Outbound Engine (Clay + Waterfall Enrichment)</option>
+                      <option value="24/7 Voice AI Speed-to-Lead Receptionist">24/7 Voice AI Speed-to-Lead Receptionist</option>
+                      <option value="Custom Internal RAG Knowledge & Ops Automations">Custom Internal RAG Knowledge & Ops Automations</option>
+                      <option value="Complete Turnkey Revenue Infrastructure">Complete Turnkey Revenue Infrastructure</option>
                     </select>
                   </div>
 
@@ -379,7 +379,7 @@ export default function Home() {
               data-testid="button-audit-nav"
               variant="outline"
               className="hidden sm:inline-flex border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 rounded-full text-xs font-semibold px-4 h-9 shadow-xs"
-              onClick={() => openWithService("AI Search & GEO/AEO Audit")}
+              onClick={() => openWithService("72-Hour AI Search & GEO/AEO Visibility Sprint")}
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5 text-primary" />
               Free GEO Audit
@@ -387,7 +387,7 @@ export default function Home() {
             <Button
               data-testid="button-contact-us-nav"
               className="bg-primary hover:bg-primary/90 text-white rounded-full px-5 h-9 text-xs font-semibold shadow-sm transition-all"
-              onClick={() => openWithService("Full Revenue Infrastructure Package")}
+              onClick={() => openWithService("Complete Turnkey Revenue Infrastructure")}
             >
               Book Systems Call
             </Button>
@@ -418,17 +418,17 @@ export default function Home() {
             >
               <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-red-200/90 shadow-sm mb-6">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-bold text-zinc-900 tracking-wider uppercase">Autonomous B2B Revenue Infrastructure</span>
+                <span className="text-xs font-bold text-zinc-900 tracking-wider uppercase">Turnkey AI Infrastructure For Founder-Led B2B</span>
               </motion.div>
 
               <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-zinc-950 leading-[1.08] mb-6">
-                Stop burning capital on manual sales. <br/>
-                <span className="text-zinc-950 font-extrabold">Build an </span>
-                <span className="font-serif italic font-normal text-primary">Autonomous Revenue Engine.</span>
+                Scale your pipeline without hiring sales reps or agencies. <br/>
+                <span className="text-zinc-950 font-extrabold">Build a </span>
+                <span className="font-serif italic font-normal text-primary">Turnkey Revenue Engine.</span>
               </motion.h1>
 
               <motion.p variants={fadeIn} className="text-lg sm:text-xl text-zinc-700 font-normal mb-8 leading-relaxed max-w-2xl">
-                We engineer the automated data pipelines modern B2B software companies need: Clay waterfall enrichment, 24/7 Voice AI speed-to-lead, and Generative Engine Optimization (GEO) to dominate AI search.
+                We engineer done-for-you customer acquisition systems: 72-hour AI Search visibility (GEO), automated Clay outbound pipelines, and 24/7 Voice AI triage. Zero developer headaches, zero agency retainers—just qualified pipeline on your calendar.
               </motion.p>
 
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12">
@@ -458,11 +458,11 @@ export default function Home() {
               <motion.div variants={fadeIn} className="flex flex-wrap gap-3">
                 <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span className="text-xs font-semibold text-zinc-800">Voice AI Speed-to-Lead: &lt; 60s</span>
+                  <span className="text-xs font-semibold text-zinc-800">72-Hour Turnkey Deployment</span>
                 </div>
                 <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-xs font-semibold text-zinc-800">70+ Waterfall Data Signals</span>
+                  <span className="text-xs font-semibold text-zinc-800">Zero In-House Devs Required</span>
                 </div>
                 <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-amber-500" />
@@ -478,10 +478,10 @@ export default function Home() {
       <section id="services" className="py-24 bg-white relative">
         <div className="container max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
-            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Core Technical Services</h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">Four modular revenue engines.</h3>
+            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Core Modular Engines</h2>
+            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">Enterprise pipeline power. Zero headcount.</h3>
             <p className="text-zinc-600 text-sm sm:text-base mt-4">
-              Engineered to plug directly into your CRM and data stack without adding headcount.
+              Turnkey systems engineered to connect to your domain, website, and CRM in days without adding engineers or sales payroll.
             </p>
           </div>
 
@@ -503,8 +503,8 @@ export default function Home() {
                   <span className="text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">01 // Acquisition</span>
                 </div>
                 
-                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">Signal-Driven Outbound Engine</h4>
-                <p className="text-xs font-semibold text-primary mb-4">Clay + Deep Waterfall Enrichment + Buying Triggers</p>
+                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">Turnkey Outbound Engine</h4>
+                <p className="text-xs font-semibold text-primary mb-4">Clay + 70-Source Waterfall Enrichment + Buying Triggers</p>
                 
                 {/* Embedded Realistic Mockup: Clay Waterfall Table */}
                 <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 mb-6 font-mono text-xs shadow-inner">
@@ -528,21 +528,21 @@ export default function Home() {
                 </div>
 
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                  We don't send emails to static lists. We build live scraping pipelines that identify accounts experiencing trigger events (executive changes, hiring surges, tool adoption) and personalize every touchpoint using verified, waterfall-enriched data.
+                  Scale outbound like a 10-person sales team without hiring a single rep or learning complex automation tools. We set up secondary domains, configure bulletproof deliverability (SPF/DKIM/DMARC), build live intent scraping (hiring spikes, tech migration, funding), and write hyper-personalized sequences so qualified meetings appear directly on your calendar.
                 </p>
 
                 <div className="space-y-2 mb-8">
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>70+ source waterfall enrichment (Prospeo, Datagma, Findymail)</span>
+                    <span>100% Done-for-You: We handle domains, DNS records, Clay tables, and mailbox warming</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Live intent scraping: job postings, tech stacks, and company news</span>
+                    <span>Signal-driven targeting: Only contact buyers actively hiring or adopting new software</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Domain health & inbox infrastructure with 98%+ primary inboxing</span>
+                    <span>Direct CRM & calendar integration: Wake up to qualified calls without manual prospecting</span>
                   </div>
                 </div>
               </div>
@@ -550,9 +550,9 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="w-full justify-between text-zinc-700 hover:text-zinc-950 hover:bg-zinc-50 border border-zinc-200 rounded-xl"
-                onClick={() => openWithService("Clay + AI Deep Enrichment Outbound Engine")}
+                onClick={() => openWithService("Turnkey Outbound Engine (Clay + Waterfall Enrichment)")}
               >
-                <span>Deploy Outbound Engine</span>
+                <span>Launch Turnkey Outbound</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </motion.div>
@@ -574,7 +574,7 @@ export default function Home() {
                 </div>
                 
                 <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">24/7 Voice AI Speed-to-Lead</h4>
-                <p className="text-xs font-semibold text-primary mb-4">Conversational Inbound & Instant Form Triage</p>
+                <p className="text-xs font-semibold text-primary mb-4">Instant Inbound Qualification · 60-Second Form Triage</p>
                 
                 {/* Embedded Realistic Mockup: Voice AI Call Agent UI */}
                 <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 mb-6 text-xs shadow-inner">
@@ -601,21 +601,21 @@ export default function Home() {
                 </div>
 
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                  Leads go cold within 5 minutes. Our sub-second conversational voice agents answer every inbound call 24/7 or trigger an instant outbound call the second a web form is submitted, handling objections and dropping qualified demos on your calendar.
+                  You can't sit by the phone or monitor web forms 24/7 while running your company, and leads go cold in minutes. Our sub-second conversational Voice AI answers every inbound call and calls back web form submissions in under 60 seconds—answering product questions, vetting budgets, and scheduling qualified demos on your calendar.
                 </p>
 
                 <div className="space-y-2 mb-8">
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Sub-second voice latency with human pacing and natural interruption</span>
+                    <span>Sub-second conversational latency that sounds indistinguishable from an in-house rep</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Automated BANT qualification (Budget, Authority, Need, Timeline)</span>
+                    <span>Instant web-form callback: Engages high-intent leads while they're still on your site</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Real-time calendar booking and instant CRM summary logging</span>
+                    <span>Automatic calendar booking & CRM call logging—zero manual follow-up required</span>
                   </div>
                 </div>
               </div>
@@ -623,9 +623,9 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="w-full justify-between text-zinc-700 hover:text-zinc-950 hover:bg-zinc-50 border border-zinc-200 rounded-xl"
-                onClick={() => openWithService("24/7 Voice AI Receptionist & Speed-to-Lead")}
+                onClick={() => openWithService("24/7 Voice AI Speed-to-Lead Receptionist")}
               >
-                <span>Deploy Voice AI Agent</span>
+                <span>Deploy 24/7 Voice AI</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </motion.div>
@@ -646,8 +646,8 @@ export default function Home() {
                   <span className="text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">03 // Visibility</span>
                 </div>
                 
-                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">AI Search & Visibility (GEO / AEO)</h4>
-                <p className="text-xs font-semibold text-primary mb-4">Generative Engine Optimization & Citation Share</p>
+                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">72-Hour AI Search Sprint (GEO / AEO)</h4>
+                <p className="text-xs font-semibold text-primary mb-4">Perplexity, ChatGPT & Claude Citation Optimization</p>
                 
                 {/* Embedded Realistic Mockup: Perplexity / AI Search Citation */}
                 <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 mb-6 text-xs shadow-inner">
@@ -667,21 +667,21 @@ export default function Home() {
                 </div>
 
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                  Modern B2B buyers ask Perplexity, ChatGPT, and Claude for vendor shortlists. If the LLMs don't recognize your entity and structured authority, your competitors get the deal. We optimize your digital presence for generative answer engines.
+                  When potential buyers ask ChatGPT, Perplexity, or Claude for recommendations in your niche, are you mentioned? We reverse-engineer your brand's presence in LLMs and deploy full schema markup, entity relationships, and citation networks directly into your website in 72 hours—without needing a software agency or in-house developers.
                 </p>
 
                 <div className="space-y-2 mb-8">
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Brand entity mapping for ChatGPT, Claude, Perplexity & Google AI Overviews</span>
+                    <span>Turnkey 72-Hour Sprint: We audit, write the code, and inject the schema for you</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Schema engineering & high-authority citation seeding</span>
+                    <span>Works on any site: Compatible with Webflow, Framer, WordPress, Shopify, or custom stacks</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Comprehensive AI search audit comparing you against direct rivals</span>
+                    <span>Direct AI citation seeding so ChatGPT and Perplexity actively recommend your business</span>
                   </div>
                 </div>
               </div>
@@ -689,9 +689,9 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="w-full justify-between text-zinc-700 hover:text-zinc-950 hover:bg-zinc-50 border border-zinc-200 rounded-xl"
-                onClick={() => openWithService("AI Search & GEO/AEO Audit")}
+                onClick={() => openWithService("72-Hour AI Search & GEO/AEO Visibility Sprint")}
               >
-                <span>Request AI Search Audit</span>
+                <span>Request 72-Hour AI Audit</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </motion.div>
@@ -712,8 +712,8 @@ export default function Home() {
                   <span className="text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">04 // Operations</span>
                 </div>
                 
-                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">Internal RAG Knowledge & Automations</h4>
-                <p className="text-xs font-semibold text-primary mb-4">Enterprise Knowledge Base & Cross-Tool Sync</p>
+                <h4 className="text-2xl font-bold text-zinc-950 mb-1.5">Autonomous Knowledge & Operations</h4>
+                <p className="text-xs font-semibold text-primary mb-4">Reclaim 15+ Hours Every Week · Zero Manual Data Entry</p>
                 
                 {/* Embedded Realistic Mockup: RAG Assistant UI */}
                 <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 mb-6 text-xs shadow-inner">
@@ -733,21 +733,21 @@ export default function Home() {
                 </div>
 
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                  Stop answering the same technical questions over and over. We build secure, custom Retrieval-Augmented Generation (RAG) portals that turn your product documentation, past proposals, and sales playbooks into an instant intelligence assistant.
+                  Stop losing your weekends to repetitive prospect inquiries, RFP documents, and manual CRM updating. We turn your product documentation, past proposals, and Notion/Drive files into an instant intelligence assistant that drafts answers and automates tedious backend workflows.
                 </p>
 
                 <div className="space-y-2 mb-8">
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Secure vector database linked to your Notion, Drive, Slack, or Docs</span>
+                    <span>Instant, accurate answers to prospect security, technical, and pricing inquiries</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Instant RFP and sales objection responses for account executives</span>
+                    <span>Seamless integration with Notion, Google Drive, Slack, and your CRM</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-zinc-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>Custom backend automations eliminating manual data re-entry</span>
+                    <span>Eliminates manual admin so you can spend your time building and closing deals</span>
                   </div>
                 </div>
               </div>
@@ -755,9 +755,9 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="w-full justify-between text-zinc-700 hover:text-zinc-950 hover:bg-zinc-50 border border-zinc-200 rounded-xl"
-                onClick={() => openWithService("Custom Internal RAG Knowledge & Automations")}
+                onClick={() => openWithService("Custom Internal RAG Knowledge & Ops Automations")}
               >
-                <span>Build Knowledge System</span>
+                <span>Automate Your Operations</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </motion.div>
@@ -770,9 +770,9 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">The Paradigm Shift</h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">The legacy sales model is broken.</h3>
+            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">The traditional sales model is broken.</h3>
             <p className="text-zinc-600 text-sm sm:text-base mt-4">
-              Mass email scraping, sluggish SDR call queues, and total invisibility on AI search platforms are draining B2B budgets.
+              Generic email blasts, $8k/mo agency retainers, and total invisibility on AI search engines are draining B2B runways.
             </p>
           </div>
 
@@ -785,34 +785,34 @@ export default function Home() {
                     ✕
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-zinc-900">The Legacy Agency Model</h4>
-                    <p className="text-xs text-zinc-500">Bloated headcount, manual friction & low conversion</p>
+                    <h4 className="text-lg font-bold text-zinc-900">The Agency & Hiring Trap</h4>
+                    <p className="text-xs text-zinc-500">Bloated retainers, manual friction & endless hiring headaches</p>
                   </div>
                 </div>
 
                 <ul className="space-y-4 text-sm text-zinc-600">
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Volume Email Blasts:</strong> Buying static lists from Apollo, blasting generic templates, and getting domains blacklisted.</span>
+                    <span><strong>$8,000/mo Agency Retainers:</strong> Locked into rigid multi-month contracts with agencies sending generic email blasts that burn your domain and deliver zero real pipeline.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Dead Inbound:</strong> High-intent web submissions sit for 4–24 hours before an SDR dials, losing 80% of conversion probability.</span>
+                    <span><strong>3–6 Months to Ramp SDRs:</strong> Spending tens of thousands hiring junior reps who require constant supervision, produce sluggish results, and churn in 90 days.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Invisible to AI Search:</strong> Decision-makers ask Perplexity & ChatGPT for vendor recommendations, and your brand is never cited.</span>
+                    <span><strong>Sluggish Inbound Response:</strong> Demo requests sit for hours or days while you're busy running the business, losing 80% of high-intent buyers to competitors.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Scattered Knowledge:</strong> Reps waste 60% of their workday looking for battlecards, case studies, and pricing specs across messy Drives.</span>
+                    <span><strong>Invisible on AI Search:</strong> Buyers ask Perplexity & ChatGPT for the best solution in your field, and your business is never recommended or cited.</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-400 font-mono">
-                <span>Result: High Churn</span>
-                <span>Diminishing ROI</span>
+                <span>Result: Wasted Capital</span>
+                <span>Unpredictable Growth</span>
               </div>
             </div>
 
@@ -828,34 +828,34 @@ export default function Home() {
                   <div>
                     <h4 className="text-lg font-bold text-zinc-950 flex items-center gap-2">
                       The Telza Autonomous Engine
-                      <span className="px-2.5 py-0.5 text-[10px] bg-primary text-white font-bold rounded-full uppercase tracking-wider">Engineered</span>
+                      <span className="px-2.5 py-0.5 text-[10px] bg-primary text-white font-bold rounded-full uppercase tracking-wider">Turnkey</span>
                     </h4>
-                    <p className="text-xs text-zinc-500">Signal-triggered data, sub-second execution & owned systems</p>
+                    <p className="text-xs text-zinc-500">Done-for-you systems, signal-triggered data & owned assets</p>
                   </div>
                 </div>
 
                 <ul className="space-y-4 text-sm text-zinc-700">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>Signal-Driven Clay Outbound:</strong> Real-time intent triggers (hiring surges, tech-stack change, funding) + 70-source waterfall verification.</span>
+                    <span><strong>Turnkey 72-Hour Deployment:</strong> We handle the complete technical build, DNS records, schemas, and pipelines. Zero developers or code required from your team.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>24/7 Voice AI Speed-to-Lead:</strong> Human-sounding conversational agent calls inbound leads within 60s, qualifies BANT, and drops meetings onto calendars.</span>
+                    <span><strong>Signal-Driven Outbound:</strong> We track real-time buyer triggers (hiring surges, software migrations, funding) and enrich leads across 70+ waterfall data sources.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>AEO & GEO Authority:</strong> Engineered entity schemas so ChatGPT, Perplexity, and Claude actively recommend your product as the benchmark.</span>
+                    <span><strong>24/7 Voice AI Speed-to-Lead:</strong> Sub-second conversational AI qualifies inbound inquiries and calls form submissions in &lt; 60s, dropping meetings directly onto your calendar.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>Unified RAG & Automations:</strong> Centralized internal AI portal instant-answers technical queries and syncs data to CRM seamlessly.</span>
+                    <span><strong>Guaranteed AI Search Footprint:</strong> Structured entity schemas so ChatGPT, Perplexity, and Claude cite your business as the recommended authority.</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-primary font-mono font-semibold">
-                <span>Outcome: Permanent Asset</span>
+                <span>Outcome: Permanent Owned Asset</span>
                 <span>Compounding Pipeline</span>
               </div>
             </div>
@@ -871,31 +871,31 @@ export default function Home() {
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-primary text-xs font-semibold mb-4">
                 <Sparkles className="w-3.5 h-3.5" />
-                Featured Diagnostic Wedge
+                72-Hour Rapid Implementation
               </div>
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-5">
-                Is your brand invisible to AI search?
+                Is your business invisible to ChatGPT & Perplexity?
               </h3>
               <p className="text-zinc-600 text-base leading-relaxed mb-6">
-                When enterprise decision-makers ask Perplexity, ChatGPT, or Claude: <em>"What is the best platform for [your industry]?"</em>, is your brand cited as the primary authority, or is your competition winning the deal?
+                Most websites were designed for legacy Google search, not modern LLM reasoning platforms. When enterprise decision-makers ask AI assistants for recommendations in your niche, will they find your business or your competitors? We audit your AI citation footprint and inject the necessary schema and entity relationships in 72 hours—without needing a software agency or in-house developers.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-semibold text-zinc-800 mb-8">
                 <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>AI Citation Share Score</span>
+                  <span>72-Hour Turnkey Deployment</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Entity Knowledge Graph Audit</span>
+                  <span>Webflow, Framer, WP & Custom Stacks</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Competitor Recommendation Gap</span>
+                  <span>AI Citation Share Diagnostic</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Actionable Remediation Blueprint</span>
+                  <span>Zero Dev Headaches for You</span>
                 </div>
               </div>
 
@@ -904,12 +904,12 @@ export default function Home() {
                   size="lg"
                   data-testid="button-request-geo-audit"
                   className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-base font-semibold shadow-md transition-all hover:scale-105"
-                  onClick={() => openWithService("AI Search & GEO/AEO Audit")}
+                  onClick={() => openWithService("72-Hour AI Search & GEO/AEO Visibility Sprint")}
                 >
                   Request Free GEO Audit
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <span className="text-zinc-500 text-xs font-medium">Delivered as a 5-page diagnostic within 48 hours.</span>
+                <span className="text-zinc-500 text-xs font-medium">Free 5-page diagnostic in 48h. Turnkey deployment in 72h.</span>
               </div>
             </div>
 
@@ -1016,9 +1016,9 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Deployment Protocol</h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">How we build your engine.</h3>
+            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">How we deploy your engine.</h3>
             <p className="text-zinc-600 text-sm sm:text-base mt-4">
-              A structured 3-phase engineering sprint designed to get live pipeline running in under 21 days.
+              A rapid 3-phase engineering sprint designed to get live pipeline running with zero dev overhead on your end.
             </p>
           </div>
 
@@ -1027,10 +1027,10 @@ export default function Home() {
               <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 01
               </div>
-              <h4 className="text-xl font-bold text-zinc-950 mb-2">Audit & Data Architecture</h4>
-              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Week 1 // Diagnostic</p>
+              <h4 className="text-xl font-bold text-zinc-950 mb-2">72-Hour Audit & Visibility Sprint</h4>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Days 1–3 // Diagnostic & Schema</p>
               <p className="text-zinc-600 text-sm leading-relaxed">
-                We dissect your historical customer wins, map buying signals, conduct your GEO audit, and isolate the exact data triggers that indicate high purchase intent.
+                We audit your AI search presence across LLMs, isolate high-intent buying signals, and deploy initial schema and GEO fixes to your website immediately.
               </p>
             </div>
 
@@ -1038,10 +1038,10 @@ export default function Home() {
               <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 02
               </div>
-              <h4 className="text-xl font-bold text-zinc-950 mb-2">Engine Build & AI Training</h4>
-              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Weeks 2–3 // Build</p>
+              <h4 className="text-xl font-bold text-zinc-950 mb-2">Turnkey Infrastructure Build</h4>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Days 4–14 // Build & Train</p>
               <p className="text-zinc-600 text-sm leading-relaxed">
-                We build the Clay waterfall enrichment workflows, train and benchmark your Voice AI speed-to-lead agents, and deploy your secure internal RAG knowledge assistant.
+                We configure secondary domains, set up Clay waterfall enrichment, train your 24/7 Voice AI agent, and connect your calendar for automated bookings.
               </p>
             </div>
 
@@ -1049,10 +1049,10 @@ export default function Home() {
               <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 03
               </div>
-              <h4 className="text-xl font-bold text-zinc-950 mb-2">Autonomous Scale</h4>
-              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Continuous // Optimize</p>
+              <h4 className="text-xl font-bold text-zinc-950 mb-2">Autonomous Scale & Optimization</h4>
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Day 15+ // Compounding Pipeline</p>
               <p className="text-zinc-600 text-sm leading-relaxed">
-                We launch campaigns, monitor deliverability, continuously tune prompt parameters, and ensure your calendar stays packed with qualified decision-maker conversations.
+                Campaigns go live, inbound form leads are engaged in under 60 seconds, and qualified decision-maker calls appear automatically on your calendar.
               </p>
             </div>
           </div>
@@ -1066,7 +1066,7 @@ export default function Home() {
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">The Unfair Advantage</h2>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950 mb-4">Why work with Telza?</h3>
             <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto">
-              We operate as technical revenue architects, not another run-of-the-mill agency selling manual labor.
+              We operate as technical revenue architects, delivering done-for-you systems without agency retainers or hiring friction.
             </p>
           </div>
 
@@ -1076,9 +1076,9 @@ export default function Home() {
                 <Cpu className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Engineering Over Headcount</h4>
+                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Turnkey Execution, Zero Dev Work</h4>
                 <p className="text-zinc-600 text-sm leading-relaxed">
-                  Instead of hiring 4 junior reps who take 3 months to ramp and burn your leads, we deploy intelligent automated systems that run 24/7 without churn.
+                  We handle the technical setup end-to-end: mailboxes, DNS records, schemas, and AI prompts. You never write code or fiddle with complex automations.
                 </p>
               </div>
             </div>
@@ -1090,7 +1090,7 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Speed-to-Lead Monopoly</h4>
                 <p className="text-zinc-600 text-sm leading-relaxed">
-                  The first company to engage an interested buyer wins 78% of the time. Our Voice AI engages your web inquiries within 60 seconds.
+                  The first business to respond wins 78% of the time. Our conversational Voice AI answers every inbound call and dials web leads in under 60 seconds.
                 </p>
               </div>
             </div>
@@ -1100,9 +1100,9 @@ export default function Home() {
                 <Database className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Owned Infrastructure</h4>
+                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">100% Owned Infrastructure</h4>
                 <p className="text-zinc-600 text-sm leading-relaxed">
-                  You own the Clay tables, custom prompts, scraping workflows, and RAG architectures. We build permanent revenue assets for your enterprise.
+                  No platform lock-in. All Clay tables, verified data pipelines, secondary domains, and custom AI prompts belong entirely to your company.
                 </p>
               </div>
             </div>
@@ -1112,9 +1112,9 @@ export default function Home() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Zero Domain Burn Risk</h4>
+                <h4 className="text-lg font-bold text-zinc-950 mb-1.5">Fraction of Full-Time Headcount</h4>
                 <p className="text-zinc-600 text-sm leading-relaxed">
-                  We configure secondary isolated domain ecosystems with automated SPF/DKIM/DMARC authentication, protecting your primary company brand.
+                  Get the output of a senior growth engineer, SDR team, and technical SEO specialist at a fraction of a single full-time hire.
                 </p>
               </div>
             </div>
@@ -1156,7 +1156,7 @@ export default function Home() {
                 size="lg"
                 variant="outline"
                 className="border-zinc-700 bg-white/5 hover:bg-white/10 text-white rounded-full px-7 h-14 text-base font-medium w-full sm:w-auto"
-                onClick={() => openWithService("AI Search & GEO/AEO Audit")}
+                onClick={() => openWithService("72-Hour AI Search & GEO/AEO Visibility Sprint")}
               >
                 Request Free GEO Audit
               </Button>
