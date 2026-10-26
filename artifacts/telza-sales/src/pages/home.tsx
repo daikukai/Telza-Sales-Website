@@ -19,8 +19,15 @@ import {
   TrendingUp,
   Activity,
   Layers,
-  Radio,
-  FileCheck
+  FileCheck,
+  MapPin,
+  Mail,
+  Phone,
+  Clock,
+  Globe,
+  Building2,
+  Terminal,
+  Compass
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
@@ -340,12 +347,12 @@ export default function Home() {
         defaultService={selectedService}
       />
 
-      {/* Navbar */}
+      {/* Navbar with Requested Nav Items: Services, Solutions, About Us, Contact Us */}
       <nav
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b ${
           scrolled
             ? "bg-white/95 backdrop-blur-md border-zinc-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] py-3"
-            : "bg-transparent border-transparent py-5"
+            : "bg-white/70 backdrop-blur-xs border-zinc-200/50 py-4"
         }`}
       >
         <div className="container max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -357,15 +364,13 @@ export default function Home() {
             >
               <img src="/logo.png" alt="Telza" className="h-9 md:h-10 object-contain" />
             </a>
-            <div className="hidden lg:flex items-center gap-7 text-sm font-semibold text-zinc-600">
-              <button onClick={() => scrollTo("solutions")} className="hover:text-zinc-950 transition-colors">Solutions</button>
-              <button onClick={() => scrollTo("the-shift")} className="hover:text-zinc-950 transition-colors">The Shift</button>
-              <button onClick={() => scrollTo("geo-audit")} className="hover:text-zinc-950 transition-colors flex items-center gap-1.5">
-                AI Search Audit
-                <span className="px-2 py-0.5 rounded-full text-[10px] bg-red-50 text-primary border border-red-200 font-bold uppercase tracking-wider">NEW</span>
-              </button>
-              <button onClick={() => scrollTo("architecture")} className="hover:text-zinc-950 transition-colors">Architecture</button>
-              <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-950 transition-colors">Why Telza</button>
+            
+            {/* Direct primary nav links */}
+            <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-700">
+              <button onClick={() => scrollTo("services")} className="hover:text-primary transition-colors">Our Services</button>
+              <button onClick={() => scrollTo("solutions")} className="hover:text-primary transition-colors">Solutions</button>
+              <button onClick={() => scrollTo("about-us")} className="hover:text-primary transition-colors">About Us</button>
+              <button onClick={() => openWithService("General Inquiry")} className="hover:text-primary transition-colors">Contact Us</button>
             </div>
           </div>
           
@@ -373,7 +378,7 @@ export default function Home() {
             <Button
               data-testid="button-audit-nav"
               variant="outline"
-              className="hidden sm:inline-flex border-zinc-200/90 bg-white hover:bg-zinc-50 text-zinc-700 hover:text-zinc-950 rounded-full text-xs font-semibold px-4 h-9 shadow-xs"
+              className="hidden sm:inline-flex border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 rounded-full text-xs font-semibold px-4 h-9 shadow-xs"
               onClick={() => openWithService("AI Search & GEO/AEO Audit")}
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5 text-primary" />
@@ -390,42 +395,47 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section — Bespoke Asymmetrical Grid */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-red-50/30 via-white to-white">
-        {/* Subtle Decorative Grid Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-500/5 blur-[140px] rounded-full pointer-events-none" />
+      {/* Hero Section — Full-Bleed Realistic Workspace Image with High-Contrast Text Overlay */}
+      <section className="relative min-h-[94vh] flex items-center overflow-hidden py-32 md:py-44">
+        {/* Full-bleed background image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/hero-realistic.jpg" 
+            alt="Telza AI Revenue Operations Workspace" 
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          {/* Subtle semi-opaque light frosted glass scrim with high-contrast text backing */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/92 to-white/75 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40" />
+        </div>
 
         <div className="container max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            {/* Left Content Column */}
+          <div className="max-w-3xl">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
-              className="lg:col-span-7 max-w-2xl"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-red-200/80 shadow-xs mb-6">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-semibold text-zinc-800 tracking-wider uppercase">Autonomous B2B Revenue Infrastructure</span>
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-red-200/90 shadow-sm mb-6">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-bold text-zinc-900 tracking-wider uppercase">Autonomous B2B Revenue Infrastructure</span>
               </motion.div>
 
-              <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.08] mb-6">
+              <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-zinc-950 leading-[1.08] mb-6">
                 Stop burning capital on manual sales. <br/>
-                <span className="text-zinc-900 font-extrabold">Build an </span>
+                <span className="text-zinc-950 font-extrabold">Build an </span>
                 <span className="font-serif italic font-normal text-primary">Autonomous Revenue Engine.</span>
               </motion.h1>
 
-              <motion.p variants={fadeIn} className="text-base sm:text-lg text-zinc-600 mb-8 leading-relaxed max-w-xl">
-                We engineer the intelligent data systems modern B2B companies need: Clay waterfall outbound, 24/7 Voice AI speed-to-lead, and Generative Engine Optimization (GEO) to dominate AI search.
+              <motion.p variants={fadeIn} className="text-lg sm:text-xl text-zinc-700 font-normal mb-8 leading-relaxed max-w-2xl">
+                We engineer the automated data pipelines modern B2B software companies need: Clay waterfall enrichment, 24/7 Voice AI speed-to-lead, and Generative Engine Optimization (GEO) to dominate AI search.
               </motion.p>
 
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12">
                 <Button
                   size="lg"
                   data-testid="button-book-call-hero"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 text-sm sm:text-base font-semibold shadow-md transition-all hover:scale-[1.02]"
+                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-9 h-14 text-base font-semibold shadow-lg shadow-red-500/15 transition-all hover:scale-[1.02]"
                   onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
                 >
                   Book a Systems Diagnostic
@@ -436,7 +446,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   data-testid="button-audit-hero"
-                  className="border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 rounded-full px-6 h-13 text-sm sm:text-base font-medium shadow-xs transition-all"
+                  className="border-zinc-300 bg-white/90 hover:bg-white text-zinc-900 rounded-full px-7 h-14 text-base font-semibold shadow-sm transition-all"
                   onClick={() => scrollTo("geo-audit")}
                 >
                   <Search className="mr-2 h-4 w-4 text-primary" />
@@ -444,176 +454,31 @@ export default function Home() {
                 </Button>
               </motion.div>
 
-              {/* Metrics Bar */}
-              <motion.div variants={fadeIn} className="pt-6 border-t border-zinc-200/80 grid grid-cols-3 gap-4">
-                <div>
-                  <div className="text-2xl font-extrabold text-zinc-950 tracking-tight font-mono">&lt; 60s</div>
-                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Speed-to-Lead Triage</div>
+              {/* Live Telemetry Floating Pills */}
+              <motion.div variants={fadeIn} className="flex flex-wrap gap-3">
+                <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="text-xs font-semibold text-zinc-800">Voice AI Speed-to-Lead: &lt; 60s</span>
                 </div>
-                <div>
-                  <div className="text-2xl font-extrabold text-zinc-950 tracking-tight font-mono">70+</div>
-                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Waterfall Data Signals</div>
+                <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-primary" />
+                  <span className="text-xs font-semibold text-zinc-800">70+ Waterfall Data Signals</span>
                 </div>
-                <div>
-                  <div className="text-2xl font-extrabold text-zinc-950 tracking-tight font-mono">100%</div>
-                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Owned Infrastructure</div>
+                <div className="bg-white/95 backdrop-blur-md border border-zinc-200/90 rounded-2xl px-3.5 py-2 shadow-xs flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
+                  <span className="text-xs font-semibold text-zinc-800">100% Owned Infrastructure</span>
                 </div>
               </motion.div>
             </motion.div>
-
-            {/* Right Hero Visual — Realistic Photography + Live Floating Telemetry Chips */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 relative"
-            >
-              <div className="relative mx-auto rounded-3xl overflow-hidden border border-zinc-200/90 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] bg-white group">
-                <img 
-                  src="/hero-realistic.jpg" 
-                  alt="Telza AI Revenue Operations Workspace" 
-                  className="w-full h-[440px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-black/20" />
-
-                {/* Floating Telemetry Badge 1: Top Right */}
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md border border-zinc-200/80 rounded-2xl px-3.5 py-2 shadow-lg flex items-center gap-2.5">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                  </span>
-                  <div>
-                    <div className="text-[11px] font-bold text-zinc-900 leading-none">Voice AI Inbound Active</div>
-                    <div className="text-[9px] font-mono text-zinc-500 mt-0.5">Latency: 0.38s · 24/7 Ready</div>
-                  </div>
-                </div>
-
-                {/* Floating Telemetry Badge 2: Bottom Overlay */}
-                <div className="absolute bottom-4 inset-x-4 bg-white/95 backdrop-blur-md border border-zinc-200/80 rounded-2xl p-3.5 shadow-xl">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] font-mono uppercase font-bold text-primary flex items-center gap-1">
-                      <Activity className="w-3 h-3" /> Live Pipeline Telemetry
-                    </span>
-                    <span className="text-[10px] font-mono text-zinc-500 font-semibold">99.2% Accuracy</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs font-bold text-zinc-900">
-                    <span>142 High-Intent Buying Signals Detected</span>
-                    <span className="text-emerald-600 font-mono">+38 Demos This Week</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Subtle Background Accent */}
-              <div className="absolute -bottom-6 -right-6 w-44 h-44 bg-red-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-            </motion.div>
-
           </div>
         </div>
       </section>
 
-      {/* The Shift (Old Way vs Telza Way) */}
-      <section id="the-shift" className="py-24 bg-zinc-50/70 border-y border-zinc-200/80 relative">
-        <div className="container max-w-6xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">The Paradigm Shift</h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">The legacy sales model is broken.</h3>
-            <p className="text-zinc-600 text-sm sm:text-base mt-4">
-              Mass email scraping, sluggish SDR call queues, and total invisibility on AI search platforms are draining B2B budgets.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-            {/* The Old Way */}
-            <div className="bg-white border border-zinc-200 rounded-3xl p-8 shadow-xs relative overflow-hidden flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-red-600 font-bold text-sm">
-                    ✕
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-zinc-900">The Legacy Agency Model</h4>
-                    <p className="text-xs text-zinc-500">Bloated headcount, manual friction & low conversion</p>
-                  </div>
-                </div>
-
-                <ul className="space-y-4 text-sm text-zinc-600">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Volume Email Blasts:</strong> Buying static lists from Apollo, blasting generic templates, and getting domains blacklisted.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Dead Inbound:</strong> High-intent web submissions sit for 4–24 hours before an SDR dials, losing 80% of conversion probability.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Invisible to AI Search:</strong> Decision-makers ask Perplexity & ChatGPT for vendor recommendations, and your brand is never cited.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-0.5 font-bold">•</span>
-                    <span><strong>Scattered Knowledge:</strong> Reps waste 60% of their workday looking for battlecards, case studies, and pricing specs across messy Drives.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-400 font-mono">
-                <span>Result: High Churn</span>
-                <span>Diminishing ROI</span>
-              </div>
-            </div>
-
-            {/* The Telza Autonomous Engine */}
-            <div className="bg-white border-2 border-primary/30 rounded-3xl p-8 shadow-xl shadow-red-500/5 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/5 blur-3xl rounded-full pointer-events-none" />
-              
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-primary font-bold text-sm">
-                    ✓
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-zinc-950 flex items-center gap-2">
-                      The Telza Autonomous Engine
-                      <span className="px-2.5 py-0.5 text-[10px] bg-primary text-white font-bold rounded-full uppercase tracking-wider">Engineered</span>
-                    </h4>
-                    <p className="text-xs text-zinc-500">Signal-triggered data, sub-second execution & owned systems</p>
-                  </div>
-                </div>
-
-                <ul className="space-y-4 text-sm text-zinc-700">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>Signal-Driven Clay Outbound:</strong> Real-time intent triggers (hiring surges, tech-stack change, funding) + 70-source waterfall verification.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>24/7 Voice AI Speed-to-Lead:</strong> Human-sounding conversational agent calls inbound leads within 60s, qualifies BANT, and drops meetings onto calendars.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>AEO & GEO Authority:</strong> Engineered entity schemas so ChatGPT, Perplexity, and Claude actively recommend your product as the benchmark.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>Unified RAG & Automations:</strong> Centralized internal AI portal instant-answers technical queries and syncs data to CRM seamlessly.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-primary font-mono font-semibold">
-                <span>Outcome: Permanent Asset</span>
-                <span>Compounding Pipeline</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Grid with Realistic Interactive UI Previews */}
-      <section id="solutions" className="py-24 bg-white relative">
+      {/* Services Section (`#services`) — Crisp White Background */}
+      <section id="services" className="py-24 bg-white relative">
         <div className="container max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
-            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Core Solutions Architecture</h2>
+            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Core Technical Services</h2>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">Four modular revenue engines.</h3>
             <p className="text-zinc-600 text-sm sm:text-base mt-4">
               Engineered to plug directly into your CRM and data stack without adding headcount.
@@ -900,10 +765,108 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Solutions / The Shift Section (`#solutions`) — Subtle Soft Contrast Slate Tint */}
+      <section id="solutions" className="py-24 bg-slate-50/80 border-y border-zinc-200/80 relative">
+        <div className="container max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">The Paradigm Shift</h2>
+            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">The legacy sales model is broken.</h3>
+            <p className="text-zinc-600 text-sm sm:text-base mt-4">
+              Mass email scraping, sluggish SDR call queues, and total invisibility on AI search platforms are draining B2B budgets.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* The Old Way */}
+            <div className="bg-white border border-zinc-200 rounded-3xl p-8 shadow-xs relative overflow-hidden flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-9 h-9 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-red-600 font-bold text-sm">
+                    ✕
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-zinc-900">The Legacy Agency Model</h4>
+                    <p className="text-xs text-zinc-500">Bloated headcount, manual friction & low conversion</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-4 text-sm text-zinc-600">
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5 font-bold">•</span>
+                    <span><strong>Volume Email Blasts:</strong> Buying static lists from Apollo, blasting generic templates, and getting domains blacklisted.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5 font-bold">•</span>
+                    <span><strong>Dead Inbound:</strong> High-intent web submissions sit for 4–24 hours before an SDR dials, losing 80% of conversion probability.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5 font-bold">•</span>
+                    <span><strong>Invisible to AI Search:</strong> Decision-makers ask Perplexity & ChatGPT for vendor recommendations, and your brand is never cited.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5 font-bold">•</span>
+                    <span><strong>Scattered Knowledge:</strong> Reps waste 60% of their workday looking for battlecards, case studies, and pricing specs across messy Drives.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-400 font-mono">
+                <span>Result: High Churn</span>
+                <span>Diminishing ROI</span>
+              </div>
+            </div>
+
+            {/* The Telza Autonomous Engine */}
+            <div className="bg-white border-2 border-primary/30 rounded-3xl p-8 shadow-xl shadow-red-500/5 relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/5 blur-3xl rounded-full pointer-events-none" />
+              
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-9 h-9 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-primary font-bold text-sm">
+                    ✓
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-zinc-950 flex items-center gap-2">
+                      The Telza Autonomous Engine
+                      <span className="px-2.5 py-0.5 text-[10px] bg-primary text-white font-bold rounded-full uppercase tracking-wider">Engineered</span>
+                    </h4>
+                    <p className="text-xs text-zinc-500">Signal-triggered data, sub-second execution & owned systems</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-4 text-sm text-zinc-700">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span><strong>Signal-Driven Clay Outbound:</strong> Real-time intent triggers (hiring surges, tech-stack change, funding) + 70-source waterfall verification.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span><strong>24/7 Voice AI Speed-to-Lead:</strong> Human-sounding conversational agent calls inbound leads within 60s, qualifies BANT, and drops meetings onto calendars.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span><strong>AEO & GEO Authority:</strong> Engineered entity schemas so ChatGPT, Perplexity, and Claude actively recommend your product as the benchmark.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span><strong>Unified RAG & Automations:</strong> Centralized internal AI portal instant-answers technical queries and syncs data to CRM seamlessly.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-primary font-mono font-semibold">
+                <span>Outcome: Permanent Asset</span>
+                <span>Compounding Pipeline</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Wedge: GEO / AEO Audit Callout with Boardroom Image */}
-      <section id="geo-audit" className="py-24 bg-gradient-to-b from-white via-red-50/20 to-white border-y border-zinc-200/80 relative overflow-hidden">
+      <section id="geo-audit" className="py-24 bg-white relative overflow-hidden">
         <div className="container max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="bg-white border-2 border-primary/20 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl shadow-red-500/5 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="bg-gradient-to-br from-red-50/20 via-white to-zinc-50/50 border-2 border-primary/20 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-xl shadow-red-500/5 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-primary text-xs font-semibold mb-4">
@@ -918,19 +881,19 @@ export default function Home() {
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-semibold text-zinc-800 mb-8">
-                <div className="flex items-center gap-2 bg-zinc-50 p-2.5 rounded-xl border border-zinc-200/70">
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>AI Citation Share Score</span>
                 </div>
-                <div className="flex items-center gap-2 bg-zinc-50 p-2.5 rounded-xl border border-zinc-200/70">
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>Entity Knowledge Graph Audit</span>
                 </div>
-                <div className="flex items-center gap-2 bg-zinc-50 p-2.5 rounded-xl border border-zinc-200/70">
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>Competitor Recommendation Gap</span>
                 </div>
-                <div className="flex items-center gap-2 bg-zinc-50 p-2.5 rounded-xl border border-zinc-200/70">
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-zinc-200/70 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>Actionable Remediation Blueprint</span>
                 </div>
@@ -970,8 +933,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Deployment Architecture */}
-      <section id="architecture" className="py-24 bg-zinc-50/70 border-b border-zinc-200/80 relative">
+      {/* About Us Section (`#about-us`) — Subtle Architectural Slate Tint */}
+      <section id="about-us" className="py-24 bg-zinc-50/80 border-y border-zinc-200/80 relative">
+        <div className="container max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-primary text-xs font-semibold mb-4">
+                <Building2 className="w-3.5 h-3.5" />
+                About Telza
+              </div>
+              <h3 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-[1.12] mb-6">
+                Engineering-first revenue architecture for modern B2B.
+              </h3>
+              <p className="text-zinc-600 text-base leading-relaxed mb-5">
+                Telza was founded on a simple observation: <strong>traditional B2B sales agencies are broken.</strong> They rely on manual data entry, low-wage cold-call farms, and untargeted email spam that damages your brand and burns runway.
+              </p>
+              <p className="text-zinc-600 text-base leading-relaxed mb-8">
+                We approach pipeline generation as an <strong>engineering discipline</strong>. Founded by technical software and sales engineering professionals, we combine backend data pipelines, multi-source waterfall enrichment, sub-second conversational voice models, and Generative Engine Optimization (GEO) to build autonomous, high-converting revenue systems that you own.
+              </p>
+
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-zinc-200">
+                <div>
+                  <div className="text-2xl font-extrabold text-zinc-950 font-mono">100%</div>
+                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Technical Infrastructure</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-zinc-950 font-mono">APAC/EMEA</div>
+                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Global Reach</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-zinc-950 font-mono">Zero</div>
+                  <div className="text-xs text-zinc-500 font-medium mt-0.5">Spam / Blasts</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 space-y-4">
+              <div className="bg-white p-6 rounded-2xl border border-zinc-200/90 shadow-xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+                  <Terminal className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-zinc-950 mb-1">Code Over Manual Labor</h4>
+                  <p className="text-zinc-600 text-sm leading-relaxed">
+                    Instead of hiring 4 junior reps who churn in 3 months, we build programmatic scraping pipelines and AI voice triage that run with sub-second latency 24/7/365.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-zinc-200/90 shadow-xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+                  <Compass className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-zinc-950 mb-1">Signal-Triggered Precision</h4>
+                  <p className="text-zinc-600 text-sm leading-relaxed">
+                    We never reach out to cold, static lists. We only trigger outbound sequences when verified buying signals flash green (hiring spikes, executive moves, tech stack changes).
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-zinc-200/90 shadow-xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-zinc-950 mb-1">Global Distributed Delivery</h4>
+                  <p className="text-zinc-600 text-sm leading-relaxed">
+                    Headquartered with distributed operations across APAC, North America, and EMEA, providing 24-hour speed-to-lead coverage and local compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Deployment Architecture (`#architecture`) — Crisp White Background */}
+      <section id="architecture" className="py-24 bg-white relative">
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Deployment Protocol</h2>
@@ -982,8 +1023,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
-              <div className="w-11 h-11 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6">
+            <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 01
               </div>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Audit & Data Architecture</h4>
@@ -993,8 +1034,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
-              <div className="w-11 h-11 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6">
+            <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 02
               </div>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Engine Build & AI Training</h4>
@@ -1004,8 +1045,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
-              <div className="w-11 h-11 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6">
+            <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-8 shadow-xs relative">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-primary font-mono font-bold text-sm mb-6 shadow-2xs">
                 03
               </div>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Autonomous Scale</h4>
@@ -1018,8 +1059,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Telza Section */}
-      <section id="why-telza" className="py-24 bg-white">
+      {/* Why Telza Section — Soft Slate Tint */}
+      <section id="why-telza" className="py-24 bg-slate-50/70 border-t border-zinc-200/80">
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">The Unfair Advantage</h2>
@@ -1030,7 +1071,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 flex items-start gap-4">
+            <div className="p-8 rounded-3xl bg-white border border-zinc-200/90 flex items-start gap-4 shadow-xs">
               <div className="w-11 h-11 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0">
                 <Cpu className="h-5 w-5" />
               </div>
@@ -1042,7 +1083,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 flex items-start gap-4">
+            <div className="p-8 rounded-3xl bg-white border border-zinc-200/90 flex items-start gap-4 shadow-xs">
               <div className="w-11 h-11 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0">
                 <Zap className="h-5 w-5" />
               </div>
@@ -1054,7 +1095,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 flex items-start gap-4">
+            <div className="p-8 rounded-3xl bg-white border border-zinc-200/90 flex items-start gap-4 shadow-xs">
               <div className="w-11 h-11 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0">
                 <Database className="h-5 w-5" />
               </div>
@@ -1066,7 +1107,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 flex items-start gap-4">
+            <div className="p-8 rounded-3xl bg-white border border-zinc-200/90 flex items-start gap-4 shadow-xs">
               <div className="w-11 h-11 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center text-primary flex-shrink-0">
                 <ShieldCheck className="h-5 w-5" />
               </div>
@@ -1081,7 +1122,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section — High Impact Accent Section */}
       <section className="py-24 bg-zinc-950 text-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/20 blur-[130px] rounded-full pointer-events-none" />
 
@@ -1124,41 +1165,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-white py-12 border-t border-zinc-200/80">
-        <div className="container max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start gap-1.5">
-            <img src="/logo.png" alt="Telza" className="h-7 object-contain" />
-            <p className="text-zinc-500 text-xs">Autonomous Revenue Infrastructure for High-Growth B2B.</p>
+      {/* Dark Footer with Basic Info, Enlarged Logo, Location & Contact Details */}
+      <footer className="bg-zinc-950 text-zinc-300 py-16 border-t border-zinc-900">
+        <div className="container max-w-7xl mx-auto px-6 md:px-12">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-zinc-800/80">
+            
+            {/* Col 1: Brand & Bio (Larger Logo) */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="flex items-center gap-2">
+                <img src="/logo.png" alt="Telza" className="h-11 md:h-12 object-contain brightness-125" />
+              </div>
+              <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
+                Telza builds autonomous AI revenue infrastructure for high-growth B2B software and specialized services. From signal-driven Clay outbound to 24/7 Voice AI and Generative Search (GEO).
+              </p>
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href="https://www.linkedin.com/company/telzasales/?viewAsMember=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-linkedin"
+                  className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+                  aria-label="Telza on LinkedIn"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href="mailto:kai@telzasales.com"
+                  className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+                  aria-label="Email Telza"
+                >
+                  <Mail className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Col 2: Global Operations & Location */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-white">Global Operations</h4>
+              <div className="space-y-2.5 text-xs text-zinc-400">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>APAC Regional Delivery & Global Remote Teams</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Globe className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Serving Clients across North America, APAC & EMEA</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Clock className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Mon – Fri: 8:00 AM – 6:00 PM (Multi-Timezone Coverage)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 3: Direct Contact & Inquiries */}
+            <div className="lg:col-span-4 space-y-3">
+              <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-white">Direct Communication</h4>
+              <div className="space-y-2.5 text-xs text-zinc-400">
+                <div className="flex items-center gap-2.5">
+                  <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+                  <a href="mailto:kai@telzasales.com" className="hover:text-white transition-colors">
+                    kai@telzasales.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="h-4 w-4 text-primary flex-shrink-0" />
+                  <span>Direct Advisory & Telephony Lines</span>
+                </div>
+                <div className="pt-2">
+                  <Button
+                    size="sm"
+                    className="bg-primary hover:bg-primary/90 text-white rounded-full text-xs font-semibold px-4 h-8"
+                    onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
+                  >
+                    Open Instant Booking Calendar
+                    <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-zinc-600">
-            <button onClick={() => scrollTo("solutions")} className="hover:text-zinc-950 transition-colors">Solutions</button>
-            <button onClick={() => scrollTo("the-shift")} className="hover:text-zinc-950 transition-colors">The Shift</button>
-            <button onClick={() => scrollTo("geo-audit")} className="hover:text-zinc-950 transition-colors">AI Search Audit</button>
-            <button onClick={() => scrollTo("architecture")} className="hover:text-zinc-950 transition-colors">Architecture</button>
-            <button onClick={() => scrollTo("why-telza")} className="hover:text-zinc-950 transition-colors">Why Telza</button>
-            <a 
-              href="mailto:kai@telzasales.com" 
-              className="hover:text-primary transition-colors font-medium"
-            >
-              kai@telzasales.com
-            </a>
+          {/* Bottom Copyright Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+            <div>
+              © {new Date().getFullYear()} Telza Sales. All rights reserved. Autonomous Revenue Infrastructure.
+            </div>
+            <div className="flex items-center gap-6">
+              <a href="#" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-zinc-300 transition-colors">Terms of Service</a>
+              <a href="mailto:kai@telzasales.com" className="hover:text-zinc-300 transition-colors">Support</a>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.linkedin.com/company/telzasales/?viewAsMember=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="link-linkedin"
-              className="text-zinc-500 hover:text-[#0A66C2] transition-colors"
-              aria-label="Telza on LinkedIn"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
-            <span className="text-zinc-400 text-xs">© {new Date().getFullYear()} Telza. All rights reserved.</span>
-          </div>
         </div>
       </footer>
     </div>
