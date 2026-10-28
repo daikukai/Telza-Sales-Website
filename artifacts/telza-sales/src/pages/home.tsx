@@ -168,9 +168,9 @@ export default function Home() {
 
       {/* Hero Section — 2-Column Split: Value Prop + Direct Quote Form */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-white">
-        {/* Ambient light gradient glow inspired by the logo */}
-        <div className="absolute top-12 -left-20 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.075)_0%,rgba(185,28,28,0.03)_45%,transparent_70%)] blur-3xl pointer-events-none -z-0" />
-        <div className="absolute top-44 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.04)_0%,transparent_65%)] blur-3xl pointer-events-none -z-0" />
+        {/* Prominent, vibrant ambient gradient glow inspired by the logo's crimson/ruby curves */}
+        <div className="absolute top-4 -left-24 w-[650px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.20)_0%,rgba(185,28,28,0.12)_35%,rgba(244,63,94,0.06)_60%,transparent_75%)] blur-2xl pointer-events-none -z-0" />
+        <div className="absolute top-40 left-1/4 w-[480px] h-[480px] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.12)_0%,rgba(147,51,234,0.05)_45%,transparent_70%)] blur-2xl pointer-events-none -z-0" />
 
         <div className="container max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
@@ -182,12 +182,12 @@ export default function Home() {
               animate="visible"
               variants={staggerContainer}
             >
-              {/* Soft background aura behind left hero text */}
-              <div className="absolute -top-10 -left-6 w-72 h-72 bg-gradient-to-br from-red-500/[0.06] via-rose-500/[0.03] to-transparent rounded-full blur-2xl pointer-events-none -z-10" />
+              {/* Visible rich gradient aura behind left hero text */}
+              <div className="absolute -top-12 -left-8 w-96 h-96 bg-gradient-to-br from-red-600/[0.18] via-rose-500/[0.12] to-blue-600/[0.08] rounded-full blur-3xl pointer-events-none -z-10" />
 
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-red-500/[0.08] via-rose-500/[0.06] to-blue-500/[0.08] border border-red-200/60 text-zinc-900 text-xs font-bold uppercase tracking-wider mb-5">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-red-600 to-rose-500 animate-pulse" />
-                Turnkey Revenue Infrastructure
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-red-500/15 via-rose-500/10 to-blue-500/15 border border-red-300 text-zinc-950 text-xs font-bold uppercase tracking-wider mb-5 shadow-xs">
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-red-600 to-rose-500 animate-pulse shadow-sm shadow-red-500/50" />
+                <span>Turnkey Revenue Infrastructure</span>
               </motion.div>
 
               <motion.h1 
@@ -195,7 +195,7 @@ export default function Home() {
                 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.08] mb-6"
               >
                 Build a turnkey <br />
-                <span className="text-primary font-serif italic font-normal">revenue engine.</span>
+                <span className="bg-gradient-to-r from-red-600 via-rose-600 to-primary bg-clip-text text-transparent font-serif italic font-normal">revenue engine.</span>
               </motion.h1>
 
               <motion.p 
@@ -544,10 +544,10 @@ export default function Home() {
       </section>
 
       {/* How It Works Section (Audit -> Build -> Launch, Days Removed) */}
-      <section id="how-it-works" className="relative py-24 bg-gradient-to-b from-white via-rose-50/20 to-slate-50/50 border-t border-zinc-200/80 overflow-hidden">
-        {/* Ambient atmospheric gradient glow inspired by the logo */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[320px] bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.06)_0%,rgba(244,63,94,0.02)_50%,transparent_75%)] blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 left-5 w-[420px] h-[320px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.04)_0%,transparent_70%)] blur-3xl pointer-events-none" />
+      <section id="how-it-works" className="relative py-28 bg-gradient-to-b from-rose-50/70 via-red-50/40 to-slate-100/70 border-t border-red-200/60 overflow-hidden">
+        {/* Prominent, vibrant ambient atmospheric gradient glow inspired by the logo */}
+        <div className="absolute -top-10 right-10 w-[600px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.18)_0%,rgba(185,28,28,0.10)_40%,transparent_70%)] blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-10 left-5 w-[500px] h-[350px] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.12)_0%,rgba(225,29,72,0.08)_40%,transparent_70%)] blur-2xl pointer-events-none" />
 
         <div className="container max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           
@@ -564,9 +564,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Step 1: Audit */}
-            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-red-500/30 transition-all duration-300 relative group overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-red-600 via-rose-500 to-amber-500" />
-              <span className="text-[11px] font-mono font-bold text-red-600 bg-red-50 border border-red-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
+            <div className="bg-white/95 backdrop-blur-md border-2 border-red-200/90 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-red-600 via-rose-500 to-amber-500" />
+              <span className="text-xs font-mono font-bold text-red-700 bg-red-100 border border-red-200 px-3 py-1 rounded-lg uppercase tracking-wider inline-block mb-3.5 shadow-2xs">
                 Phase 01 // Diagnostic
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Audit</h4>
@@ -576,9 +576,9 @@ export default function Home() {
             </div>
 
             {/* Step 2: Build */}
-            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-blue-500/30 transition-all duration-300 relative group overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rose-500 via-primary to-indigo-500" />
-              <span className="text-[11px] font-mono font-bold text-primary bg-blue-50 border border-blue-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
+            <div className="bg-white/95 backdrop-blur-md border-2 border-blue-200/90 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:border-blue-500/50 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-rose-500 via-primary to-indigo-500" />
+              <span className="text-xs font-mono font-bold text-primary bg-blue-100 border border-blue-200 px-3 py-1 rounded-lg uppercase tracking-wider inline-block mb-3.5 shadow-2xs">
                 Phase 02 // Engineering
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Build</h4>
@@ -588,9 +588,9 @@ export default function Home() {
             </div>
 
             {/* Step 3: Launch */}
-            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-indigo-500/30 transition-all duration-300 relative group overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary via-indigo-500 to-purple-500" />
-              <span className="text-[11px] font-mono font-bold text-indigo-600 bg-indigo-50 border border-indigo-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
+            <div className="bg-white/95 backdrop-blur-md border-2 border-indigo-200/90 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-primary via-indigo-500 to-purple-600" />
+              <span className="text-xs font-mono font-bold text-indigo-700 bg-indigo-100 border border-indigo-200 px-3 py-1 rounded-lg uppercase tracking-wider inline-block mb-3.5 shadow-2xs">
                 Phase 03 // Production
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Launch</h4>
