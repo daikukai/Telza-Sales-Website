@@ -57,8 +57,6 @@ type QuoteForm = z.infer<typeof quoteSchema>;
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalService, setModalService] = useState("Turnkey Revenue Infrastructure");
 
   const {
     register,
@@ -115,7 +113,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-red-500/15 antialiased">
+    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-blue-600/15 antialiased">
       
       {/* Top Header Navigation */}
       <header
@@ -125,18 +123,18 @@ export default function Home() {
             : "bg-white/85 backdrop-blur-xs border-zinc-200/60 py-4"
         }`}
       >
-        <div className="container max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           
           {/* Logo */}
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group flex-shrink-0"
           >
-            <img src="/logo.png" alt="Telza Sales" className="h-9 md:h-10 object-contain" />
+            <img src="/logo.png" alt="Telza Sales" className="h-8 sm:h-9 md:h-10 object-contain" />
           </a>
 
-          {/* Navigation Links */}
+          {/* Center Navigation Links (Hidden on mobile) */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
             <button onClick={() => scrollTo("services")} className="hover:text-primary transition-colors">Services</button>
             <button onClick={() => scrollTo("how-it-works")} className="hover:text-primary transition-colors">How it works</button>
@@ -145,21 +143,21 @@ export default function Home() {
             <button onClick={() => scrollTo("contact")} className="hover:text-primary transition-colors">Contact us</button>
           </nav>
 
-          {/* Right Header: Direct Phone & CTA Quote Button */}
-          <div className="flex items-center gap-4">
+          {/* Right Header: Clickable Phone Button (Visible on mobile & desktop) + Quote Button (Hidden on mobile) */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <a
               href="tel:+639956720645"
-              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-zinc-700 hover:text-primary transition-colors py-1.5 px-3 rounded-full hover:bg-zinc-50 border border-transparent hover:border-zinc-200"
-              title="Call Telza Sales"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-blue-50 hover:bg-blue-100 border border-blue-200/90 py-2 px-3 sm:px-3.5 rounded-xl transition-all shadow-2xs hover:scale-[1.02]"
+              title="Call Telza Sales directly"
             >
-              <Phone className="w-3.5 h-3.5 text-primary" />
-              <span>+63 995 672 0645</span>
+              <Phone className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+              <span className="font-mono font-medium">+63 995 672 0645</span>
             </a>
 
             <Button
               onClick={() => scrollTo("hero-quote-form")}
               data-testid="button-header-quote"
-              className="bg-primary hover:bg-primary/90 text-white rounded-xl px-5 h-9 md:h-10 text-xs md:text-sm font-semibold shadow-xs transition-all hover:scale-[1.02]"
+              className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-xl px-5 h-9 md:h-10 text-xs md:text-sm font-semibold shadow-xs transition-all hover:scale-[1.02]"
             >
               Get a free quote
             </Button>
@@ -180,7 +178,7 @@ export default function Home() {
               animate="visible"
               variants={staggerContainer}
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-5">
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-5">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Turnkey Revenue Infrastructure
               </motion.div>
@@ -203,19 +201,19 @@ export default function Home() {
               {/* 3 Value Pillars */}
               <motion.div variants={fadeIn} className="space-y-3.5 mb-8">
                 <div className="flex items-center gap-3 text-sm font-medium text-zinc-800">
-                  <div className="w-5 h-5 rounded-full bg-red-50 border border-red-200 flex items-center justify-center text-primary flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-primary flex-shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   <span>Done for you. No extra heads on your payroll.</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm font-medium text-zinc-800">
-                  <div className="w-5 h-5 rounded-full bg-red-50 border border-red-200 flex items-center justify-center text-primary flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-primary flex-shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   <span>You own everything we build.</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm font-medium text-zinc-800">
-                  <div className="w-5 h-5 rounded-full bg-red-50 border border-red-200 flex items-center justify-center text-primary flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-primary flex-shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   <span>Signal-driven pipeline delivered straight to your calendar.</span>
@@ -239,7 +237,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               <div className="bg-white border border-zinc-200/90 rounded-3xl p-7 sm:p-8 shadow-xl shadow-zinc-950/5 relative overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary via-red-500 to-amber-500" />
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary via-blue-500 to-indigo-500" />
 
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold text-zinc-950 tracking-tight">Get a free quote</h2>
@@ -250,7 +248,7 @@ export default function Home() {
 
                 {submitted ? (
                   <div className="py-8 text-center space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-red-50 border border-red-200 text-primary flex items-center justify-center mx-auto">
+                    <div className="w-14 h-14 rounded-full bg-blue-50 border border-blue-200 text-primary flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
                     <h3 className="text-lg font-bold text-zinc-950">Quote Request Prepared</h3>
@@ -356,7 +354,7 @@ export default function Home() {
                       type="submit"
                       data-testid="button-submit-hero-quote"
                       disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-11 text-sm font-semibold shadow-md shadow-red-500/10 transition-all hover:scale-[1.01] disabled:opacity-60"
+                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-11 text-sm font-semibold shadow-md shadow-blue-500/10 transition-all hover:scale-[1.01] disabled:opacity-60"
                     >
                       {isSubmitting ? "Processing..." : "Send my request"}
                       {!isSubmitting && <ChevronRight className="ml-1.5 h-4 w-4" />}
@@ -396,7 +394,7 @@ export default function Home() {
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div className="flex items-start gap-5">
-                  <span className="text-xs font-mono font-bold text-primary bg-red-50 border border-red-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-mono font-bold text-primary bg-blue-50 border border-blue-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
                     01
                   </span>
                   <div>
@@ -415,7 +413,7 @@ export default function Home() {
                 <Button
                   variant="ghost"
                   onClick={() => openServiceModal("Outbound Lead Generation (Clay + Waterfall)")}
-                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-red-50/50 rounded-xl flex-shrink-0"
+                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
                   Request quote
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -433,7 +431,7 @@ export default function Home() {
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div className="flex items-start gap-5">
-                  <span className="text-xs font-mono font-bold text-primary bg-red-50 border border-red-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-mono font-bold text-primary bg-blue-50 border border-blue-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
                     02
                   </span>
                   <div>
@@ -452,7 +450,7 @@ export default function Home() {
                 <Button
                   variant="ghost"
                   onClick={() => openServiceModal("24/7 Voice AI Speed-to-Lead")}
-                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-red-50/50 rounded-xl flex-shrink-0"
+                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
                   Request quote
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -470,7 +468,7 @@ export default function Home() {
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div className="flex items-start gap-5">
-                  <span className="text-xs font-mono font-bold text-primary bg-red-50 border border-red-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-mono font-bold text-primary bg-blue-50 border border-blue-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
                     03
                   </span>
                   <div>
@@ -481,7 +479,7 @@ export default function Home() {
                       A site built to convert and structured so AI search recommends it.
                     </p>
                     <p className="text-zinc-600 text-sm leading-relaxed max-w-3xl">
-                      We craft high-converting, responsive landing pages designed for modern buyers, coupled with Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO). We engineer rich schema markup, entity relationships, and citation networks so ChatGPT, Perplexity, Claude, and Google AI Overviews cite your software as the category benchmark.
+                      We craft high-converting, responsive landing pages designed specifically to capture and convert modern B2B buyers, coupled with Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO). We engineer rich schema markup, entity relationships, and citation networks so ChatGPT, Perplexity, Claude, and Google AI Overviews cite your software as the category benchmark.
                     </p>
                   </div>
                 </div>
@@ -489,7 +487,7 @@ export default function Home() {
                 <Button
                   variant="ghost"
                   onClick={() => openServiceModal("Website, AEO & GEO AI Search Visibility")}
-                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-red-50/50 rounded-xl flex-shrink-0"
+                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
                   Request quote
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -507,7 +505,7 @@ export default function Home() {
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div className="flex items-start gap-5">
-                  <span className="text-xs font-mono font-bold text-primary bg-red-50 border border-red-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-mono font-bold text-primary bg-blue-50 border border-blue-200/80 rounded-lg px-2.5 py-1 flex-shrink-0 mt-0.5">
                     04
                   </span>
                   <div>
@@ -526,7 +524,7 @@ export default function Home() {
                 <Button
                   variant="ghost"
                   onClick={() => openServiceModal("Custom Automations & Internal RAG Knowledge")}
-                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-red-50/50 rounded-xl flex-shrink-0"
+                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
                   Request quote
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -622,9 +620,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Founder Narrative & Technical Ethos */}
+            {/* Right: Founder Narrative & Technical Architecture Ethos */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-4">
                 About us
               </div>
 
@@ -636,12 +634,16 @@ export default function Home() {
                 <p>
                   <strong>Telza Sales is founded by Daikukai Bindah.</strong> With a strong background in backend engineering and 10 years of outbound systems architecture, Kai approaches customer acquisition as an engineering discipline rather than a guessing game.
                 </p>
+                
+                {/* Paragraph 2: Shifting into technical setups, custom automations, conversion landing pages, tying to turnkey revenue */}
                 <p>
-                  <strong>We find decision-makers, not email lists.</strong> Most outbound agencies optimize for volume. That doesn't work for founder-led software companies. Generic campaigns to scraped lists result in spam folders, burned domains, and wasted budget. Decision-makers ignore untargeted outreach.
+                  <strong>Engineering the revenue architecture.</strong> We don't just write copy or blast static lists. We engineer the underlying technical setups: custom webhook automations, conversion-engineered landing pages built to capture and qualify demand, and rich schema injection for AI answer engines. Every piece of code, automated trigger, and conversational Voice AI flow is designed to tie directly into your CRM—turning fragmented sales tools into a single, predictable turnkey revenue engine.
                 </p>
+
                 <p>
-                  At Telza, we don't sell mass blast spam. We engineer signal-driven, human-led outbound that creates predictable pipeline for founder-led B2B software. You deal directly with the person who actually designs and builds the systems, from the very first diagnostic to live production.
+                  <strong>We find decision-makers, not email lists.</strong> Most outbound agencies optimize for volume. That doesn't work for founder-led software companies—generic campaigns to scraped lists result in spam folders, burned domains, and wasted budget. Decision-makers ignore untargeted outreach. At Telza, we build signal-driven, human-led outbound where you deal directly with the engineer who builds and deploys your systems, from first diagnostic to live scale.
                 </p>
+
                 <p className="text-zinc-500 text-xs font-mono pt-1">
                   We work with founder-led B2B tech teams across APAC, North America, and EMEA.
                 </p>
@@ -714,7 +716,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Team Member 3: Angelo Del Rosario */}
+            {/* Team Member 3: Angelo Del Rosario (Distinct portrait) */}
             <div className="bg-zinc-50 border border-zinc-200/90 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition-all group">
               <div className="aspect-[3/4] overflow-hidden bg-zinc-200 relative">
                 <img 
@@ -739,7 +741,7 @@ export default function Home() {
       {/* Pre-Footer / Contact Us Banner ("Tell us what is broken.") */}
       <section id="contact" className="py-20 bg-zinc-50 border-t border-zinc-200/80">
         <div className="container max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-primary text-xs font-bold uppercase tracking-wider mb-4">
             Contact us
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 mb-4 tracking-tight">
@@ -768,7 +770,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clean Minimalist Footer */}
+      {/* Clean Minimalist Footer with Cayco Street, Sampaloc, Metro Manila */}
       <footer className="bg-white text-zinc-700 py-16 border-t border-zinc-200">
         <div className="container max-w-7xl mx-auto px-6 md:px-12">
           
@@ -785,14 +787,14 @@ export default function Home() {
                   href="https://www.linkedin.com/company/telzasales/?viewAsMember=true"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-primary hover:border-red-200 transition-colors"
+                  className="w-9 h-9 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-primary hover:border-blue-200 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-4 w-4" />
                 </a>
                 <a
                   href="mailto:kai@telzasales.com"
-                  className="w-9 h-9 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-primary hover:border-red-200 transition-colors"
+                  className="w-9 h-9 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-primary hover:border-blue-200 transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="h-4 w-4" />
@@ -800,13 +802,13 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Col 2: Headquarters & Office Location */}
+            {/* Col 2: Headquarters & Office Location (Cayco Street, Sampaloc, Metro Manila) */}
             <div className="lg:col-span-4 space-y-3">
               <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-zinc-950">Operating Headquarters</h4>
               <div className="space-y-2 text-xs text-zinc-600">
                 <div className="flex items-start gap-2.5">
                   <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>Four E-Com Center, Mall of Asia Complex, Pasay City, Metro Manila, 1300 Philippines</span>
+                  <span>Cayco Street, Sampaloc, Metro Manila, Philippines</span>
                 </div>
                 <div className="flex items-start gap-2.5">
                   <Globe className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />

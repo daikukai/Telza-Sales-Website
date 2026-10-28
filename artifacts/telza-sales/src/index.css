@@ -84,17 +84,17 @@
   --sidebar: 0 0% 98%;
   --sidebar-foreground: 0 0% 9%;
   --sidebar-border: 0 0% 90%;
-  --sidebar-primary: 0 70% 40%;
+  --sidebar-primary: 221 83% 53%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 0 0% 96%;
   --sidebar-accent-foreground: 0 0% 9%;
-  --sidebar-ring: 0 70% 40%;
+  --sidebar-ring: 221 83% 53%;
   
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 9%;
   --popover-border: 0 0% 90%;
   
-  --primary: 0 70% 40%; /* Crimson */
+  --primary: 221 83% 53%; /* Cobalt Tech Blue */
   --primary-foreground: 0 0% 100%;
   
   --secondary: 0 0% 90%;
@@ -110,8 +110,8 @@
   --destructive-foreground: 0 0% 98%;
   
   --input: 0 0% 90%;
-  --ring: 0 70% 40%;
-  --chart-1: 0 70% 40%;
+  --ring: 221 83% 53%;
+  --chart-1: 221 83% 53%;
   --chart-2: 0 0% 20%;
   --chart-3: 0 0% 40%;
   --chart-4: 0 0% 60%;
