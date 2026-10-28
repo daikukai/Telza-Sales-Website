@@ -168,18 +168,25 @@ export default function Home() {
 
       {/* Hero Section — 2-Column Split: Value Prop + Direct Quote Form */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-white">
-        <div className="container max-w-7xl mx-auto px-6 md:px-12">
+        {/* Ambient light gradient glow inspired by the logo */}
+        <div className="absolute top-12 -left-20 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.075)_0%,rgba(185,28,28,0.03)_45%,transparent_70%)] blur-3xl pointer-events-none -z-0" />
+        <div className="absolute top-44 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.04)_0%,transparent_65%)] blur-3xl pointer-events-none -z-0" />
+
+        <div className="container max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             
             {/* Left Column: Heading, Subhead, Bullets */}
             <motion.div 
-              className="lg:col-span-7 pt-2 lg:pt-6"
+              className="lg:col-span-7 pt-2 lg:pt-6 relative"
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-5">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              {/* Soft background aura behind left hero text */}
+              <div className="absolute -top-10 -left-6 w-72 h-72 bg-gradient-to-br from-red-500/[0.06] via-rose-500/[0.03] to-transparent rounded-full blur-2xl pointer-events-none -z-10" />
+
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-red-500/[0.08] via-rose-500/[0.06] to-blue-500/[0.08] border border-red-200/60 text-zinc-900 text-xs font-bold uppercase tracking-wider mb-5">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-red-600 to-rose-500 animate-pulse" />
                 Turnkey Revenue Infrastructure
               </motion.div>
 
@@ -537,8 +544,12 @@ export default function Home() {
       </section>
 
       {/* How It Works Section (Audit -> Build -> Launch, Days Removed) */}
-      <section id="how-it-works" className="py-24 bg-white border-t border-zinc-200/80">
-        <div className="container max-w-6xl mx-auto px-6 md:px-12">
+      <section id="how-it-works" className="relative py-24 bg-gradient-to-b from-white via-rose-50/20 to-slate-50/50 border-t border-zinc-200/80 overflow-hidden">
+        {/* Ambient atmospheric gradient glow inspired by the logo */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[320px] bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.06)_0%,rgba(244,63,94,0.02)_50%,transparent_75%)] blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-10 left-5 w-[420px] h-[320px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.04)_0%,transparent_70%)] blur-3xl pointer-events-none" />
+
+        <div className="container max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           
           <div className="mb-16 max-w-2xl">
             <h2 className="text-xs font-bold text-primary uppercase tracking-widest mb-3">How it works</h2>
@@ -553,8 +564,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Step 1: Audit */}
-            <div className="bg-zinc-50 border border-zinc-200/90 rounded-2xl p-7 shadow-xs relative">
-              <span className="text-[11px] font-mono font-bold text-primary uppercase tracking-wider block mb-3">
+            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-red-500/30 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-red-600 via-rose-500 to-amber-500" />
+              <span className="text-[11px] font-mono font-bold text-red-600 bg-red-50 border border-red-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
                 Phase 01 // Diagnostic
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Audit</h4>
@@ -564,8 +576,9 @@ export default function Home() {
             </div>
 
             {/* Step 2: Build */}
-            <div className="bg-zinc-50 border border-zinc-200/90 rounded-2xl p-7 shadow-xs relative">
-              <span className="text-[11px] font-mono font-bold text-primary uppercase tracking-wider block mb-3">
+            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-blue-500/30 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rose-500 via-primary to-indigo-500" />
+              <span className="text-[11px] font-mono font-bold text-primary bg-blue-50 border border-blue-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
                 Phase 02 // Engineering
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Build</h4>
@@ -575,8 +588,9 @@ export default function Home() {
             </div>
 
             {/* Step 3: Launch */}
-            <div className="bg-zinc-50 border border-zinc-200/90 rounded-2xl p-7 shadow-xs relative">
-              <span className="text-[11px] font-mono font-bold text-primary uppercase tracking-wider block mb-3">
+            <div className="bg-white/95 backdrop-blur-xs border border-zinc-200/90 rounded-2xl p-7 shadow-xs hover:shadow-md hover:border-indigo-500/30 transition-all duration-300 relative group overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary via-indigo-500 to-purple-500" />
+              <span className="text-[11px] font-mono font-bold text-indigo-600 bg-indigo-50 border border-indigo-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider inline-block mb-3">
                 Phase 03 // Production
               </span>
               <h4 className="text-xl font-bold text-zinc-950 mb-2">Launch</h4>
