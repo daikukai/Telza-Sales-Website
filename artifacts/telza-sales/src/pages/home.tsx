@@ -157,7 +157,7 @@ export default function Home() {
             <Button
               onClick={() => scrollTo("hero-quote-form")}
               data-testid="button-header-quote"
-              className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-xl px-5 h-9 md:h-10 text-xs md:text-sm font-semibold shadow-xs transition-all hover:scale-[1.02]"
+              className="hidden sm:inline-flex bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-5 h-9 md:h-10 text-xs md:text-sm font-semibold shadow-xs transition-all hover:scale-[1.02]"
             >
               Get a free quote
             </Button>
@@ -264,7 +264,7 @@ export default function Home() {
                     </p>
                     <Button
                       onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
-                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-11 text-xs font-semibold shadow-xs"
+                      className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.01]"
                     >
                       Open Instant Booking Calendar
                       <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
@@ -361,7 +361,7 @@ export default function Home() {
                       type="submit"
                       data-testid="button-submit-hero-quote"
                       disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-11 text-sm font-semibold shadow-md shadow-blue-500/10 transition-all hover:scale-[1.01] disabled:opacity-60"
+                      className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-sm font-semibold shadow-md shadow-rose-500/15 transition-all hover:scale-[1.01] disabled:opacity-60"
                     >
                       {isSubmitting ? "Processing..." : "Send my request"}
                       {!isSubmitting && <ChevronRight className="ml-1.5 h-4 w-4" />}
@@ -666,7 +666,7 @@ export default function Home() {
               <div className="pt-6">
                 <Button
                   onClick={() => scrollTo("hero-quote-form")}
-                  className="bg-primary hover:bg-primary/90 text-white rounded-xl px-6 h-11 text-xs font-semibold shadow-xs"
+                  className="bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-6 h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.02]"
                 >
                   Work directly with Kai
                   <ChevronRight className="ml-1.5 h-4 w-4" />
@@ -768,7 +768,7 @@ export default function Home() {
             <Button
               onClick={() => scrollTo("hero-quote-form")}
               data-testid="button-prefooter-quote"
-              className="bg-primary hover:bg-primary/90 text-white rounded-xl px-7 h-12 text-sm font-semibold shadow-md transition-all hover:scale-105"
+              className="bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-7 h-12 text-sm font-semibold shadow-md shadow-rose-500/15 transition-all hover:scale-105"
             >
               Get a free quote
               <ArrowRight className="ml-1.5 h-4 w-4" />
@@ -851,7 +851,7 @@ export default function Home() {
                   <Button
                     size="sm"
                     onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
-                    className="bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold px-4 h-8 shadow-xs"
+                    className="bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl text-xs font-semibold px-4 h-8 shadow-xs transition-all hover:scale-[1.02]"
                   >
                     Direct Calendar Booking
                     <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
