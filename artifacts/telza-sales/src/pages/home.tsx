@@ -491,14 +491,47 @@ export default function Home() {
                   </div>
                 </div>
 
-                <Button
-                  variant="ghost"
-                  onClick={() => openServiceModal("Website, AEO & GEO AI Search Visibility")}
-                  className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
-                >
-                  Request quote
-                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-                </Button>
+                <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-2.5 flex-shrink-0">
+                  <motion.a
+                    href="https://check.telzasales.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="button-ai-readiness-check"
+                    animate={{
+                      scale: [1, 1.025, 1],
+                      boxShadow: [
+                        "0 4px 14px 0 rgba(245, 158, 11, 0.35)",
+                        "0 6px 22px 0 rgba(239, 68, 68, 0.45)",
+                        "0 4px 14px 0 rgba(245, 158, 11, 0.35)"
+                      ]
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2.5,
+                      ease: "easeInOut"
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 shadow-md border border-amber-300/40 hover:brightness-110 transition-all cursor-pointer whitespace-nowrap group"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-90"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-100"></span>
+                    </span>
+                    <Sparkles className="h-4 w-4 text-amber-200 flex-shrink-0" />
+                    <span>Free AI Search Readiness</span>
+                    <ArrowUpRight className="h-4 w-4 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
+                  </motion.a>
+
+                  <Button
+                    variant="ghost"
+                    onClick={() => openServiceModal("Website, AEO & GEO AI Search Visibility")}
+                    className="self-start md:self-end text-xs font-semibold text-zinc-600 hover:text-primary hover:bg-blue-50/50 rounded-xl px-2 h-7"
+                  >
+                    Request quote
+                    <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                  </Button>
+                </div>
               </div>
             </motion.div>
 
