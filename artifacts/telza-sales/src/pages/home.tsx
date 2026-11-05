@@ -110,6 +110,14 @@ export default function Home() {
     setSubmittedData(data);
 
     try {
+      // 1. Send instant email via Resend serverless function
+      fetch("/.netlify/functions/send-diagnostic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }).catch(() => {});
+
+      // 2. Also register with Netlify Forms in the background
       const formData = new URLSearchParams();
       formData.append("form-name", "diagnostic-inquiry");
       formData.append("name", data.name);
