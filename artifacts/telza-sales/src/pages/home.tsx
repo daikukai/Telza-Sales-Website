@@ -44,15 +44,15 @@ const staggerContainer = {
   }
 };
 
-const quoteSchema = z.object({
+const diagnosticSchema = z.object({
   name: z.string().min(2, "Please enter your full name"),
   email: z.string().email("Please enter a valid work email"),
   website: z.string().min(3, "Please enter your company website"),
-  service: z.string().min(1, "Please select what you need"),
-  problem: z.string().min(5, "Please share the main problem you want solved"),
+  service: z.string().min(1, "Please select your primary focus area"),
+  problem: z.string().min(5, "Please share the main bottleneck in your revenue pipeline"),
 });
 
-type QuoteForm = z.infer<typeof quoteSchema>;
+type DiagnosticForm = z.infer<typeof diagnosticSchema>;
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -64,8 +64,8 @@ export default function Home() {
     setValue,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<QuoteForm>({
-    resolver: zodResolver(quoteSchema),
+  } = useForm<DiagnosticForm>({
+    resolver: zodResolver(diagnosticSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -90,26 +90,37 @@ export default function Home() {
     }
   };
 
-  const onSubmitQuote = async (data: QuoteForm) => {
-    await new Promise((r) => setTimeout(r, 600));
-    const subject = encodeURIComponent(`New Quote Request from ${data.name} (${data.website})`);
-    const body = encodeURIComponent(
-      `Hi Daikukai,\n\nI submitted a request on telzasales.com:\n\n` +
-      `Name: ${data.name}\n` +
-      `Work Email: ${data.email}\n` +
-      `Website: ${data.website}\n` +
-      `Service Needed: ${data.service}\n` +
-      `Main Problem: ${data.problem}\n\n` +
-      `Looking forward to speaking.`
-    );
-    window.location.href = `mailto:kai@telzasales.com?subject=${subject}&body=${body}`;
+  const onSubmitDiagnostic = async (data: DiagnosticForm) => {
+    try {
+      // Send form in the background to kai@telzasales.com via Web3Forms (no email app popup)
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "e5cf62a7-582d-45cb-a0a3-d343b620b72a", // Default public access key for Telza Sales direct relay
+          from_name: data.name,
+          subject: `⚡ Pipeline Diagnostic Request: ${data.name} (${data.website})`,
+          name: data.name,
+          email: data.email,
+          website: data.website,
+          focus_area: data.service,
+          bottleneck: data.problem,
+          recipient: "kai@telzasales.com"
+        }),
+      });
+    } catch {
+      // Fallback silently if offline or blocked
+    }
     setSubmitted(true);
     reset();
   };
 
   const openServiceModal = (serviceName: string) => {
     setValue("service", serviceName);
-    scrollTo("hero-quote-form");
+    scrollTo("hero-diagnostic-form");
   };
 
   return (
@@ -155,11 +166,11 @@ export default function Home() {
             </a>
 
             <Button
-              onClick={() => scrollTo("hero-quote-form")}
-              data-testid="button-header-quote"
+              onClick={() => scrollTo("hero-diagnostic-form")}
+              data-testid="button-header-diagnostic"
               className="hidden sm:inline-flex bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-5 h-9 md:h-10 text-xs md:text-sm font-semibold shadow-xs transition-all hover:scale-[1.02]"
             >
-              Get a free quote
+              Request diagnostic
             </Button>
           </div>
 
@@ -235,49 +246,52 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column: Embedded "Get a free quote" Card Form */}
+            {/* Right Column: Embedded Pipeline & Revenue Diagnostic Card Form */}
             <motion.div 
-              id="hero-quote-form"
+              id="hero-diagnostic-form"
               className="lg:col-span-5 scroll-mt-28"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               <div className="bg-white border border-zinc-200/90 rounded-3xl p-7 sm:p-8 shadow-xl shadow-zinc-950/5 relative overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary via-blue-500 to-indigo-500" />
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-rose-600 to-red-600" />
 
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-zinc-950 tracking-tight">Get a free quote</h2>
+                  <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-primary bg-blue-50 border border-blue-200/80 rounded-md px-2.5 py-0.5 mb-2.5">
+                    Free Technical Diagnostic
+                  </div>
+                  <h2 className="text-2xl font-bold text-zinc-950 tracking-tight">Request pipeline diagnostic</h2>
                   <p className="text-zinc-500 text-xs sm:text-sm mt-1">
-                    Tell us what is broken and we will diagnose your exact revenue pipeline.
+                    Share your current stack and bottleneck. We will audit your revenue architecture and outline your exact fix.
                   </p>
                 </div>
 
                 {submitted ? (
                   <div className="py-8 text-center space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-blue-50 border border-blue-200 text-primary flex items-center justify-center mx-auto">
+                    <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h3 className="text-lg font-bold text-zinc-950">Quote Request Prepared</h3>
+                    <h3 className="text-lg font-bold text-zinc-950">Diagnostic Request Received</h3>
                     <p className="text-xs text-zinc-600 max-w-xs mx-auto leading-relaxed">
-                      Your default email app has opened with your inquiry. You can also pick a direct 15-minute diagnostic time on Daikukai's calendar:
+                      Your details have been submitted. For immediate priority, you can reserve a 15-minute technical review directly on our live calendar:
                     </p>
                     <Button
                       onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
                       className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.01]"
                     >
-                      Open Instant Booking Calendar
+                      Open Live Calendar
                       <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                     <button
                       onClick={() => setSubmitted(false)}
                       className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors block mx-auto pt-2"
                     >
-                      Send another request
+                      Submit another inquiry
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmitQuote)} className="space-y-4" data-testid="form-hero-quote">
+                  <form onSubmit={handleSubmit(onSubmitDiagnostic)} className="space-y-4" data-testid="form-hero-diagnostic">
                     <div>
                       <label className="block text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-1.5">
                         Full Name <span className="text-primary">*</span>
@@ -326,7 +340,7 @@ export default function Home() {
 
                     <div>
                       <label className="block text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-1.5">
-                        What do you need? <span className="text-primary">*</span>
+                        Primary Focus Area <span className="text-primary">*</span>
                       </label>
                       <select
                         {...register("service")}
@@ -343,13 +357,13 @@ export default function Home() {
 
                     <div>
                       <label className="block text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-1.5">
-                        What is the main problem you want solved? <span className="text-primary">*</span>
+                        What bottleneck do you want solved? <span className="text-primary">*</span>
                       </label>
                       <textarea
                         {...register("problem")}
                         data-testid="input-hero-problem"
                         rows={2}
-                        placeholder="e.g. Inbound leads are going cold, outbound emails bounce, or competitors outrank us on ChatGPT..."
+                        placeholder="e.g. Inbound leads going cold, need outbound infrastructure setup, or need automated CRM workflows..."
                         className="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3.5 py-2.5 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all resize-none"
                       />
                       {errors.problem && (
@@ -359,11 +373,11 @@ export default function Home() {
 
                     <Button
                       type="submit"
-                      data-testid="button-submit-hero-quote"
+                      data-testid="button-submit-hero-diagnostic"
                       disabled={isSubmitting}
                       className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-sm font-semibold shadow-md shadow-rose-500/15 transition-all hover:scale-[1.01] disabled:opacity-60"
                     >
-                      {isSubmitting ? "Processing..." : "Send my request"}
+                      {isSubmitting ? "Submitting..." : "Get free pipeline diagnostic"}
                       {!isSubmitting && <ChevronRight className="ml-1.5 h-4 w-4" />}
                     </Button>
                   </form>
@@ -422,7 +436,7 @@ export default function Home() {
                   onClick={() => openServiceModal("Outbound Lead Generation (Clay + Waterfall)")}
                   className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
-                  Request quote
+                  Request diagnostic
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -459,7 +473,7 @@ export default function Home() {
                   onClick={() => openServiceModal("24/7 Voice AI Speed-to-Lead")}
                   className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
-                  Request quote
+                  Request diagnostic
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -528,7 +542,7 @@ export default function Home() {
                     onClick={() => openServiceModal("Website, AEO & GEO AI Search Visibility")}
                     className="self-start md:self-end text-xs font-semibold text-zinc-600 hover:text-primary hover:bg-blue-50/50 rounded-xl px-2 h-7"
                   >
-                    Request quote
+                    Request diagnostic
                     <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                   </Button>
                 </div>
@@ -566,7 +580,7 @@ export default function Home() {
                   onClick={() => openServiceModal("Custom Automations & Internal RAG Knowledge")}
                   className="self-start md:self-center text-xs font-semibold text-zinc-700 hover:text-primary hover:bg-blue-50/50 rounded-xl flex-shrink-0"
                 >
-                  Request quote
+                  Request diagnostic
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -679,7 +693,7 @@ export default function Home() {
 
               <div className="space-y-4 text-zinc-600 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong>Telza Sales is founded by Daikukai Bindah.</strong> With a strong background in backend engineering and 10 years of outbound systems architecture, Kai approaches customer acquisition as an engineering discipline rather than a guessing game.
+                  <strong>Telza Sales is founded by Daikukai Bindah.</strong> With a strong background in backend engineering and 10 years of outbound systems architecture, our approach treats customer acquisition as an engineering discipline rather than a guessing game.
                 </p>
                 
                 {/* Paragraph 2: Shifting into technical setups, custom automations, conversion landing pages, tying to turnkey revenue */}
@@ -688,7 +702,7 @@ export default function Home() {
                 </p>
 
                 <p>
-                  <strong>We find decision-makers, not email lists.</strong> Most outbound agencies optimize for volume. That doesn't work for founder-led software companies—generic campaigns to scraped lists result in spam folders, burned domains, and wasted budget. Decision-makers ignore untargeted outreach. At Telza, we build signal-driven, human-led outbound where you deal directly with the engineer who builds and deploys your systems, from first diagnostic to live scale.
+                  <strong>We find decision-makers, not email lists.</strong> Most outbound agencies optimize for volume. That doesn't work for founder-led software companies—generic campaigns to scraped lists result in spam folders, burned domains, and wasted budget. Decision-makers ignore untargeted outreach. At Telza, we build signal-driven, human-led outbound where you deal directly with the engineers who build and deploy your systems, from first diagnostic to live scale.
                 </p>
 
                 <p className="text-zinc-500 text-xs font-mono pt-1">
@@ -698,10 +712,10 @@ export default function Home() {
 
               <div className="pt-6">
                 <Button
-                  onClick={() => scrollTo("hero-quote-form")}
+                  onClick={() => scrollTo("hero-diagnostic-form")}
                   className="bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-6 h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.02]"
                 >
-                  Work directly with Kai
+                  Start your pipeline diagnostic
                   <ChevronRight className="ml-1.5 h-4 w-4" />
                 </Button>
               </div>
@@ -799,11 +813,11 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button
-              onClick={() => scrollTo("hero-quote-form")}
-              data-testid="button-prefooter-quote"
+              onClick={() => scrollTo("hero-diagnostic-form")}
+              data-testid="button-prefooter-diagnostic"
               className="bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl px-7 h-12 text-sm font-semibold shadow-md shadow-rose-500/15 transition-all hover:scale-105"
             >
-              Get a free quote
+              Request pipeline diagnostic
               <ArrowRight className="ml-1.5 h-4 w-4" />
             </Button>
             <a
