@@ -110,7 +110,6 @@ export default function Home() {
     setSubmittedData(data);
 
     try {
-      // Direct submission via Netlify Forms URL-encoded POST
       const formData = new URLSearchParams();
       formData.append("form-name", "diagnostic-inquiry");
       formData.append("name", data.name);
@@ -125,7 +124,7 @@ export default function Home() {
         body: formData.toString(),
       });
     } catch {
-      // Proceed seamlessly even if network restricts POST
+      // Continue to confirmation state
     }
 
     setSubmitted(true);
@@ -309,7 +308,16 @@ export default function Home() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmitDiagnostic)} className="space-y-4" data-testid="form-hero-diagnostic">
+                  <form
+                    onSubmit={handleSubmit(onSubmitDiagnostic)}
+                    className="space-y-4"
+                    data-testid="form-hero-diagnostic"
+                    name="diagnostic-inquiry"
+                    method="POST"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                  >
+                    <input type="hidden" name="form-name" value="diagnostic-inquiry" />
                     <div>
                       <label className="block text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-1.5">
                         Full Name <span className="text-primary">*</span>
