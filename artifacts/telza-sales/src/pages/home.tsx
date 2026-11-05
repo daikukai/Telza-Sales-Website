@@ -108,28 +108,9 @@ export default function Home() {
 
   const onSubmitDiagnostic = async (data: DiagnosticForm) => {
     setSubmittedData(data);
-    const calendlyUrl = buildCalendlyPrefillUrl(data);
 
     try {
-      // 1. Send silent notification to kai@telzasales.com via FormSubmit AJAX endpoint
-      fetch("https://formsubmit.co/ajax/kai@telzasales.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `⚡ Pipeline Diagnostic Request: ${data.name} (${data.website})`,
-          "Full Name": data.name,
-          "Work Email": data.email,
-          "Company Website": data.website,
-          "Primary Focus": data.service,
-          "Main Bottleneck": data.problem,
-          _captcha: "false",
-        }),
-      }).catch(() => {});
-
-      // 2. Also register with Netlify Forms in the background
+      // Direct submission via Netlify Forms URL-encoded POST
       const formData = new URLSearchParams();
       formData.append("form-name", "diagnostic-inquiry");
       formData.append("name", data.name);
@@ -147,8 +128,6 @@ export default function Home() {
       // Proceed seamlessly even if network restricts POST
     }
 
-    // Automatically open prefilled Calendly in a new tab so the prospect can pick a time immediately
-    window.open(calendlyUrl, "_blank");
     setSubmitted(true);
   };
 
@@ -313,13 +292,13 @@ export default function Home() {
                     </div>
                     <h3 className="text-lg font-bold text-zinc-950">Diagnostic Request Received</h3>
                     <p className="text-xs text-zinc-600 max-w-xs mx-auto leading-relaxed">
-                      We've received your inquiry and our live booking calendar has opened with your details pre-filled. If it didn't open automatically, click below:
+                      Your details have been submitted. For immediate priority, pick a 15-minute diagnostic time on our live calendar:
                     </p>
                     <Button
                       onClick={() => window.open(getCalendlyPrefillUrl(), "_blank")}
                       className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.01]"
                     >
-                      Open Live Calendar (Pre-filled)
+                      Open Live Calendar
                       <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                     <button
