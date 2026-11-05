@@ -58,6 +58,8 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [submittedData, setSubmittedData] = useState<DiagnosticForm | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -91,31 +93,43 @@ export default function Home() {
   };
 
   const onSubmitDiagnostic = async (data: DiagnosticForm) => {
+    setSubmittedData(data);
     try {
-      // Send form in the background to kai@telzasales.com via Web3Forms (no email app popup)
-      await fetch("https://api.web3forms.com/submit", {
+      // Direct submission via Netlify Forms URL-encoded POST
+      const formData = new URLSearchParams();
+      formData.append("form-name", "diagnostic-inquiry");
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("website", data.website);
+      formData.append("service", data.service);
+      formData.append("problem", data.problem);
+
+      await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: "e5cf62a7-582d-45cb-a0a3-d343b620b72a", // Default public access key for Telza Sales direct relay
-          from_name: data.name,
-          subject: `⚡ Pipeline Diagnostic Request: ${data.name} (${data.website})`,
-          name: data.name,
-          email: data.email,
-          website: data.website,
-          focus_area: data.service,
-          bottleneck: data.problem,
-          recipient: "kai@telzasales.com"
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
       });
     } catch {
-      // Fallback silently if offline or blocked
+      // Proceed seamlessly even if network restricts POST
     }
     setSubmitted(true);
-    reset();
+  };
+
+  const getCalendlyPrefillUrl = () => {
+    const baseUrl = "https://calendly.com/daikukaibindah/discovery_call";
+    if (!submittedData) return baseUrl;
+
+    // Build preparation details containing company website, focus area, and specific bottleneck
+    const prepNotes = `Company Website: ${submittedData.website}\nPrimary Focus: ${submittedData.service}\nMain Bottleneck: ${submittedData.problem}`;
+
+    const params = new URLSearchParams({
+      name: submittedData.name,
+      email: submittedData.email,
+      notes: prepNotes,
+      a1: prepNotes, // "Please share anything that will help prepare for our meeting" parameter
+    });
+
+    return `${baseUrl}?${params.toString()}`;
   };
 
   const openServiceModal = (serviceName: string) => {
@@ -277,10 +291,10 @@ export default function Home() {
                       Your details have been submitted. For immediate priority, you can reserve a 15-minute technical review directly on our live calendar:
                     </p>
                     <Button
-                      onClick={() => window.open("https://calendly.com/daikukaibindah/discovery_call", "_blank")}
+                      onClick={() => window.open(getCalendlyPrefillUrl(), "_blank")}
                       className="w-full bg-gradient-to-r from-blue-600 via-rose-600 to-red-700 hover:opacity-95 text-white border-0 rounded-xl h-11 text-xs font-semibold shadow-xs transition-all hover:scale-[1.01]"
                     >
-                      Open Live Calendar
+                      Open Live Calendar (Pre-filled)
                       <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                     <button
