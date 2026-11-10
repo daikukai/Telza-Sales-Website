@@ -88,6 +88,13 @@
       ]
     }
     </script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #fafafa;
+        color: #18181b;
+      }
+    </style>
   </head>
   <body>
     <!-- Netlify form detection placeholder -->
@@ -99,8 +106,10 @@
       <textarea name="problem"></textarea>
     </form>
 
-    <!-- Semantic pre-rendered content for raw HTML crawlers, AEO agents, and AI scrapers -->
-    <div id="root">
+    <div id="root"></div>
+
+    <!-- Semantic pre-rendered content for raw HTML crawlers, AEO agents, and non-JS clients -->
+    <noscript>
       <header>
         <nav aria-label="Main Navigation">
           <a href="/">Telza Sales</a>
@@ -204,7 +213,7 @@
       <footer>
         <p>&copy; 2026 Telza Sales. All rights reserved. Founded by Daikukai Bindah.</p>
       </footer>
-    </div>
+    </noscript>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>
