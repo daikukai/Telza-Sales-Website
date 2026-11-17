@@ -22,7 +22,8 @@ import {
   Target,
   PhoneCall,
   Laptop,
-  Check
+  Check,
+  Code2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
@@ -344,12 +345,12 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-6 md:px-12">
           
           <div className="mb-16 max-w-2xl">
-            <h2 className="text-xs font-bold text-rose-600 uppercase tracking-widest mb-2.5">What We Build For You</h2>
+            <h2 className="text-xs font-bold text-rose-600 uppercase tracking-widest mb-2.5">What We Build & Engineer For You</h2>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950">
-              Four simple ways we help your business grow.
+              Five ways we help your business build and grow.
             </h3>
             <p className="text-zinc-600 text-sm sm:text-base mt-3">
-              Clear, proven systems designed to bring in new clients, speed up customer replies, and keep your calendar full.
+              Clear, proven systems designed to bring in new clients, speed up customer replies, and turn AI-built software into production-ready products.
             </p>
           </div>
 
@@ -641,6 +642,81 @@ export default function Home() {
                     <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm p-3 rounded-xl border border-zinc-200/80 text-xs">
                       <p className="font-bold text-zinc-900">Zero Manual Admin</p>
                       <p className="text-zinc-500 text-[11px]">Leads automatically synced and assigned.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Service 05: Vibe-Code Rescue & Engineering */}
+            <div className="bg-white border border-zinc-200/90 rounded-3xl p-6 sm:p-9 shadow-xs hover:border-zinc-300 transition-all duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                {/* Left: Copy */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold uppercase tracking-wider">
+                    <Code2 className="w-3.5 h-3.5" />
+                    <span>05 // Vibe-Code Rescue & Engineering</span>
+                  </div>
+                  
+                  <h4 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+                    Turn your AI-built product into production-ready software
+                  </h4>
+                  
+                  <p className="text-sm font-semibold text-rose-600">
+                    Built something with AI? We help fix, secure, integrate and scale it beyond the prototype.
+                  </p>
+                  
+                  <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
+                    AI coding tools have made it easier than ever to turn an idea into a working product. But getting a product running is only the beginning. Architecture problems, security gaps, broken integrations and production bugs can quickly become obstacles as your product grows.
+                  </p>
+                  <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
+                    We step in when AI-generated code needs experienced engineering behind it. Whether you've built with Lovable, Bolt, Replit, Cursor or other AI coding tools, we help turn your working prototype into reliable, secure and scalable software.
+                  </p>
+
+                  <div className="space-y-2.5 pt-1 text-sm text-zinc-700">
+                    <div className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>System Architecture & Integration</strong> — Connect disconnected components, APIs, databases and third-party services into a cohesive system.</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Security & Governance</strong> — Identify vulnerabilities and address authentication, authorization, data isolation, RLS, privacy and access-control issues.</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Production Engineering</strong> — Fix bugs, optimize performance, improve deployment, implement monitoring and build reliable failure recovery.</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>AI Systems Engineering</strong> — Connect AI models to real business data, applications, permissions, APIs and operational workflows.</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <Button
+                      onClick={() => openServiceModal("Vibe-Code Rescue & Engineering")}
+                      className="bg-zinc-950 hover:bg-zinc-800 text-white rounded-xl text-xs font-semibold px-5 h-10 shadow-xs"
+                    >
+                      Get Your Product Production-Ready
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Right: Clean Stock Photo */}
+                <div className="lg:col-span-5">
+                  <div className="rounded-2xl overflow-hidden shadow-md border border-zinc-200 relative aspect-[4/3] bg-zinc-100">
+                    <img 
+                      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" 
+                      alt="Software engineering and production code architecture" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 bg-zinc-950/95 backdrop-blur-sm p-3 rounded-xl border border-zinc-800 text-xs text-white">
+                      <p className="font-bold text-white">From AI Prototype to Production-Ready</p>
+                      <p className="text-zinc-400 text-[11px]">Hardened architecture, secure APIs, and production scaling.</p>
                     </div>
                   </div>
                 </div>
@@ -1015,6 +1091,7 @@ export default function Home() {
                           <option value="24/7 Voice AI Speed-to-Lead">02 // 24/7 Phone Answering & Quick Follow-up</option>
                           <option value="Website, AEO & GEO AI Search Visibility">03 // Modern Website & Google / AI Search</option>
                           <option value="Custom Automations & Internal Workflows">04 // Smart Automations (Connect My Tools)</option>
+                          <option value="Vibe-Code Rescue & Engineering">05 // Vibe-Code Rescue & Engineering (Fix & Scale AI Apps)</option>
                           <option value="Complete Turnkey Customer Acquisition Engine">Complete Turnkey Customer Engine</option>
                         </select>
                       </div>
